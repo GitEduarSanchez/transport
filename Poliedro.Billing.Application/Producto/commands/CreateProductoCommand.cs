@@ -2,4 +2,4 @@
 
 namespace Poliedro.Billing.Application.Producto.Commands.CreateServerCommand;
 
-public record CreateConductorCommand(string Name) : IRequest<bool>;
+public record CreateProductoCommand(string descripcion, int idunidad_medida) : IRequest<bool>;
