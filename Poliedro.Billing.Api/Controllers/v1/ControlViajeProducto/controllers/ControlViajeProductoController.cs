@@ -5,8 +5,8 @@ using Poliedro.Billing.Application.Common.Exeptions;
 using Poliedro.Billing.Application.ControlViajeProducto.Commands.CreateServerCommand;
 using Poliedro.Billing.Application.ControlViajeProducto.Dto;
 using Poliedro.Billing.Application.ControlViajeProducto.Query;
-
 namespace Poliedro.Billing.Api.Controllers.v1.Server
+
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -21,10 +21,9 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
         }
 
       [HttpGet("{id}")]
-        public async Task<ControlViajeProductoDto> GetAsync([FromRoute] int id)
+        public string Get(int id)
         {
-            var getConductorByIdQuery = new GetByIdControlViajeProductoQuery(id);
-            return await mediator.Send(getConductorByIdQuery);
+            return "value";
         }
 
 

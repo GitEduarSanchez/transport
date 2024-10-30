@@ -9,7 +9,7 @@ public class ControlViajeHandle(IControlViajeRepository _controlviajeRepository)
 {
     public async Task<bool> Handle(CreateControlViajeCommand request, CancellationToken cancellationToken)
     {
-        ControlViajeEntity controlviaje = new() {fecha = request.fecha, guia = request.guia, idVehiculoTrailer = request.idVehiculoTrailer};
+        ControlViajeEntity controlviaje = new ControlViajeEntity() {fecha = request.fecha, guia = request.guia, idVehiculoTrailer = request.idVehiculoTrailer};
         return await _controlviajeRepository.SaveAsync(controlviaje);
     }
 }

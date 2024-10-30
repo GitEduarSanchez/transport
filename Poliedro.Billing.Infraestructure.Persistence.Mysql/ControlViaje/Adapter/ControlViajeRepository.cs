@@ -11,9 +11,9 @@ public class ControlViajeRepository(DataBaseContext _context) : IControlViajeRep
     {
         return await _context.ControlViaje.ToListAsync();
     }
-       public async Task<ControlViajeEntity> GetById(int Id)
+       public async Task<ControlViajeEntity> GetById(int idControlViaje)
     {
-        return await _context.ControlViaje.FirstAsync(x => x.idControlViaje== Id);
+        return await _context.ControlViaje.FirstAsync(x => x.idControlViaje== idControlViaje);
     }
     public async Task<bool> SaveAsync(ControlViajeEntity controlViaje)
     {
