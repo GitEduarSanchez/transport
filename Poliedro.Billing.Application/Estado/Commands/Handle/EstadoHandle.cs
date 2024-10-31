@@ -9,7 +9,7 @@ public class EstadoHandle(IEstadoRepository _estadoRepository) : IRequestHandler
 {
     public async Task<bool> Handle(CreateEstadoCommand request, CancellationToken cancellationToken)
     {
-        EstadoEntity estado = new() { Descripcion = request.Descripcion };
+        EstadoEntity estado = new() { Descripcion = request.descripcion };
         return await _estadoRepository.SaveAsync(estado);
     }
 }
