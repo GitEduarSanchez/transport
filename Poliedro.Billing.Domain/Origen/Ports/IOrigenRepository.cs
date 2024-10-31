@@ -1,10 +1,10 @@
-﻿using Poliedro.Billing.Domain.Ciudad.Entities;
+﻿using Poliedro.Billing.Domain.Origen.Entities;
 
-namespace Poliedro.Billing.Domain.Ciudad.Ports;
+namespace Poliedro.Billing.Domain.Origen.Ports;
 
-public interface ICiudadRepository
+public interface IOrigenRepository
 {
-    Task<bool> SaveAsync(CiudadEntity ciudad);
-    Task<IEnumerable<CiudadEntity>> GetAllAsync();
-    Task<CiudadEntity> GetById(int Id);
+    Task<bool> SaveAsync(OrigenEntity origen);
+    Task<IEnumerable<OrigenEntity>> GetAllAsync();
+    Task<OrigenEntity> GetById(int Id);
 }

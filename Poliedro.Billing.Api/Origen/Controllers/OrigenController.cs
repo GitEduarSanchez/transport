@@ -14,7 +14,7 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
     public class OrigenController(IMediator mediator) : ControllerBase
     {
         [HttpGet]
-        public async Task<IEnumerable<CiudadDto>> GetAll()
+        public async Task<IEnumerable<OrigenDto>> GetAll()
         {
             return await mediator.Send(new GetAllActuatorsQuery());
         }

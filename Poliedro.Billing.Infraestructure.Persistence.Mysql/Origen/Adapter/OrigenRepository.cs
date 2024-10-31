@@ -1,26 +1,26 @@
-﻿using Poliedro.Billing.Domain.Ciudad.Ports;
-using Poliedro.Billing.Domain.Ciudad.Entities;
+﻿using Poliedro.Billing.Domain.Origen.Ports;
+using Poliedro.Billing.Domain.Origen.Entities;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace Poliedro.Billing.Infraestructure.Persistence.Mysql.Ciudad.Adapter;
+namespace Poliedro.Billing.Infraestructure.Persistence.Mysql.Origen.Adapter;
 
-public class CiudadRepository(DataBaseContext _context) : ICiudadRepository
+public class OrigenRepository(DataBaseContext _context) : IOrigenRepository
 {
 
-    public async Task<IEnumerable<CiudadEntity>> GetAllAsync()
+    public async Task<IEnumerable<OrigenEntity>> GetAllAsync()
     {
-        return await _context.Ciudad.ToListAsync();
+        return await _context.Origen.ToListAsync();
     }
 
-    public async Task<CiudadEntity> GetById(int Id)
+    public async Task<OrigenEntity> GetById(int Id)
     {
-        return await _context.Ciudad.FirstAsync(x => x.Id == Id);
+        return await _context.Origen.FirstAsync(x => x.Id == Id);
     }
 
-    public async Task<bool> SaveAsync(CiudadEntity Ciudad)
+    public async Task<bool> SaveAsync(OrigenEntity origen)
     {
-          await _context.Ciudad.AddAsync(Ciudad);
+          await _context.Origen.AddAsync(origen);
         return  await _context.SaveChangesAsync() > 0;
     }
 }
