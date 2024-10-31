@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Poliedro.Billing.Domain.Ciudad.Entities;
+namespace Poliedro.Billing.Domain.Origen.Entities;
 
-public class CiudadEntity
+public class OrigenEntity
 {
     [Key]
     public int Id { get; set; }
     public string Descripcion { get; set; }
-    public int Iddepartamento { get; set; }
+    
    
 }
