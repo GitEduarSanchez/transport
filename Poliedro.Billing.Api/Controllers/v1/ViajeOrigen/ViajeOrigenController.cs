@@ -2,10 +2,10 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
+using Poliedro.Billing.Application.Producto.Commands.CreateServerCommand;
 using Poliedro.Billing.Application.ViajeOrigen.Commands.CreateServerCommand;
 using Poliedro.Billing.Application.ViajeOrigen.Dto;
 using Poliedro.Billing.Application.ViajeOrigen.Query;
-
 namespace Poliedro.Billing.Api.Controllers.v1.Server
 {
     [Route("api/[controller]")]
@@ -16,13 +16,13 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
         [HttpGet]
         public async Task<IEnumerable<ViajeOrigenDto>> GetAll()
         {
-            return await mediator.Send(new GetAllViajeOrigenQuery());
+            return await mediator.Send(new GetAllActuatorsQuery());
         }
+
         [HttpGet("{id}")]
-        public async Task<ViajeOrigenDto> GetAsync([FromRoute] int id)
+        public string Get(int id)
         {
-            var getViajeOrigenrByIdQuery = new GetByIdViajeOrigenQuery(id);
-            return await mediator.Send(getViajeOrigenrByIdQuery);
+            return "value";
         }
 
 
@@ -59,4 +59,6 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
             }
         }
     }
+
+
 }
