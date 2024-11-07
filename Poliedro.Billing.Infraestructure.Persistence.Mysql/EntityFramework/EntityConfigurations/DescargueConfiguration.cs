@@ -11,7 +11,6 @@ public class DescargueConfiguration
     {
         builder.ToTable("descargue");
         builder.HasKey(x => x.iddescargue);
-        builder.Property(x => x.iddescargue).HasColumnName("iddescargue");
         builder.Property(x => x.descriocion).HasColumnName("descriocion");
     }
 

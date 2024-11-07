@@ -14,11 +14,15 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
     [TypeFilter(typeof(ExceptionManager))]
     public class DescargueController(IMediator mediator) : ControllerBase
     {
+
+
         [HttpGet]
         public async Task<IEnumerable<DescargueDto>> GetAll()
         {
             return await mediator.Send(new GetAllActuatorsQuery());
         }
+
+
 
         [HttpGet("{id}")]
         public async Task<DescargueDto> GetAsync([FromRoute] int id)
@@ -61,4 +65,6 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
             }
         }
     }
+
+    
 }
