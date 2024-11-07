@@ -2,12 +2,13 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
-using Poliedro.Billing.Application.Concepto.Commands.CreateServerCommand;
+using Poliedro.Billing.Application.Concepto.Commands;
 using Poliedro.Billing.Application.Concepto.Dto;
 using Poliedro.Billing.Application.Concepto.Query;
+using Poliedro.Billing.Application.Concepto.Query.Query;
 using System.ComponentModel.DataAnnotations;
 
-namespace Poliedro.Billing.Api.Controllers.v1.Server
+namespace Poliedro.Billing.Api.Controllers.v1.Concepto.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -29,19 +30,19 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
 
 
         [HttpPost]
-                
+
         public async Task<ActionResult<bool>> Create([FromBody] CreateConceptoCommand command)
         {
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
-       
+
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] CreateConceptoCommand command)
         {
         }
 
-        
+
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

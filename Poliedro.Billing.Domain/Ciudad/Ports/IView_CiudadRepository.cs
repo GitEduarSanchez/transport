@@ -1,4 +1,4 @@
-﻿using Poliedro.Billing.Domain.View_Ciudad.Entities;
+﻿using Poliedro.Billing.Domain.Ciudad.Entities;
 
 namespace Poliedro.Billing.Domain.Ciudad.Ports;
 

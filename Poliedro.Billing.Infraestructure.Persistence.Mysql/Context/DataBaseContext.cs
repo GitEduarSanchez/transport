@@ -2,7 +2,6 @@
 using Poliedro.Billing.Domain.Concepto.Entities;
 using Poliedro.Billing.Domain.Ciudad.Entities;
 using Poliedro.Billing.Domain.ControlViajeProducto.Entities;
-using Poliedro.Billing.Domain.View_Ciudad.Entities;
 using Poliedro.Billing.Domain.Conductor.Entities;
 using Poliedro.Billing.Domain.Producto.Entities;
 using Poliedro.Billing.Domain.ControlViaje.Entities;

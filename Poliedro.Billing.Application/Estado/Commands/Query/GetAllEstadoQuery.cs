@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using Poliedro.Billing.Application.Estado.Dto;
+using Poliedro.Billing.Application.Estado.Commands.Dto;
 
-namespace Poliedro.Billing.Application.Estado.Query;
+namespace Poliedro.Billing.Application.Estado.Commands.Query;
 
-public record GetAllEstadoQuery: IRequest<IEnumerable<EstadoDto>>;
+public record GetAllEstadoQuery : IRequest<IEnumerable<EstadoDto>>;
 

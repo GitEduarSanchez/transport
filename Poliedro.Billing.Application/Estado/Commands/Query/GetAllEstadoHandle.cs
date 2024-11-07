@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using Poliedro.Billing.Application.Estado.Dto;
-using Poliedro.Billing.Domain.Estado.Ports;
+using Poliedro.Billing.Application.Estado.Commands.Dto;
+using Poliedro.Billing.Domain.Estado.Entities.Ports;
 
-namespace Poliedro.Billing.Application.Estado.Query;
+namespace Poliedro.Billing.Application.Estado.Commands.Query;
 
 public class GetAllEstadoQueryHandle(IEstadoRepository _estadoRepository) : IRequestHandler<GetAllEstadoQuery, IEnumerable<EstadoDto>>
 {
