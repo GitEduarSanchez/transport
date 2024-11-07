@@ -1,9 +1,8 @@
 ﻿using MediatR;
 using Poliedro.Billing.Application.ControlViajeProducto.Dto;
-using Poliedro.Billing.Application.ControlViajeProducto.Query;
 using Poliedro.Billing.Domain.ControlViajeProducto.Ports;
 
-namespace Poliedro.Billing.Application.Conductor.Query;
+namespace Poliedro.Billing.Application.ControlViajeProducto.Query;
 
 public class GetAllControlViajeProductoHandle(IControlViajeProductoRepository _conductorRepository) : IRequestHandler<GetAllControlViajeProductoQuery, IEnumerable<ControlViajeProductoDto>>
 {

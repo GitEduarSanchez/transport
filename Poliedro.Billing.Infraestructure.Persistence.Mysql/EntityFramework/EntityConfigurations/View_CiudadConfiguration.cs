@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Poliedro.Billing.Domain.Ciudad.Entities;
 using Poliedro.Billing.Domain.Ciudad.Ports;
-using Poliedro.Billing.Domain.View_Ciudad.Entities;
 
 namespace Poliedro.Billing.Infraestructure.Persistence.Mysql.EntityFramework.EntityConfigurations;
 
