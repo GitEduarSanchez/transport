@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using Poliedro.Billing.Application.ControlViajeProducto.Commands.CreateServerCommand;
+using Poliedro.Billing.Application.ControlViajeProducto.Commands;
 using Poliedro.Billing.Domain.ControlViajeProducto.Entities;
 using Poliedro.Billing.Domain.ControlViajeProducto.Ports;
 
-namespace Poliedro.Billing.Application.Conductor.Handle;
+namespace Poliedro.Billing.Application.ControlViajeProducto.Handle;
 
 public class ControlViajeProductoHandle(IControlViajeProductoRepository _ControlViajeProductoRepository) : IRequestHandler<CreateControlViajeProductoCommand, bool>
 {

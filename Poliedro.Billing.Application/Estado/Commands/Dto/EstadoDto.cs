@@ -1,4 +1,4 @@
-﻿namespace Poliedro.Billing.Application.Estado.Dto;
+﻿namespace Poliedro.Billing.Application.Estado.Commands.Dto;
 
 public record EstadoDto(int Id, string Descripcion);
 

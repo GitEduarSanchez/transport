@@ -3,7 +3,7 @@ using Poliedro.Billing.Domain.Ciudad.Entities;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace Poliedro.Billing.Infraestructure.Persistence.Mysql.Ciudad.Adapter;
+namespace Poliedro.Billing.Infraestructure.Persistence.Mysql.Ciudad;
 
 public class CiudadRepository(DataBaseContext _context) : ICiudadRepository
 {
@@ -20,7 +20,7 @@ public class CiudadRepository(DataBaseContext _context) : ICiudadRepository
 
     public async Task<bool> SaveAsync(CiudadEntity Ciudad)
     {
-          await _context.Ciudad.AddAsync(Ciudad);
-        return  await _context.SaveChangesAsync() > 0;
+        await _context.Ciudad.AddAsync(Ciudad);
+        return await _context.SaveChangesAsync() > 0;
     }
 }
