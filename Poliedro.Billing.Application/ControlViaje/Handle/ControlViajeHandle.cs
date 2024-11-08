@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Poliedro.Billing.Application.ControlViaje.Commands;
 using Poliedro.Billing.Domain.ControlViaje.Entities;
-using Poliedro.Billing.Domain.ControlViaje.Ports;
+using Poliedro.Billing.Domain.ControlViaje.Entities.Ports;
 
 namespace Poliedro.Billing.Application.ControlViaje.Handle;
 

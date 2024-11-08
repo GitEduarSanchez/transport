@@ -10,6 +10,7 @@ public class ControlViajeConfiguration
     {
         builder.ToTable("controlviaje");
         builder.HasKey(x => x.idControlViaje);
+         builder.Property(x => x.idControlViaje).HasColumnName("idControlViaje");
         builder.Property(x => x.fecha).HasColumnName("fecha");
         builder.Property(x => x.guia).HasColumnName("guia");
         builder.Property(x => x.idVehiculoTrailer).HasColumnName("idvehiculotrailer");

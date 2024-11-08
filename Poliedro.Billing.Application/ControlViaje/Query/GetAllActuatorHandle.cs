@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Poliedro.Billing.Application.ControlViaje.Dto;
-using Poliedro.Billing.Domain.ControlViaje.Ports;
+using Poliedro.Billing.Domain.ControlViaje.Entities.Ports;
 
 namespace Poliedro.Billing.Application.ControlViaje.Query;
 

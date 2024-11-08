@@ -3,8 +3,6 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
 using Poliedro.Billing.Application.ControlViajeProducto.Commands;
-using Poliedro.Billing.Application.ControlViajeProducto.Commands.CreateServerCommand;
-using Poliedro.Billing.Application.ControlViajeProducto.Commands.CreateServerCommand;
 using Poliedro.Billing.Application.ControlViajeProducto.Dto;
 using Poliedro.Billing.Application.ControlViajeProducto.Query;
 namespace Poliedro.Billing.Api.Controllers.v1.ControlViajeProducto.controllers
