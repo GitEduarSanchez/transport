@@ -49,10 +49,10 @@ namespace Poliedro.Billing.Api.Controllers.v1.ControlViajeProducto.controllers
         }
 
 
-        [HttpDelete("{idControlViajeProducto}")]
-        public async Task<ActionResult<bool>> Delete(int idControlViajeProducto)
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<bool>> Delete(int id)
         {
-            var result = await mediator.Send(new DeletecontrolViajeProductoCommand(idControlViajeProducto));
+            var result = await mediator.Send(new DeletecontrolViajeProductoCommand(id));
             return Ok(result);
         }
 
