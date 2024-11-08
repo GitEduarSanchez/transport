@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Poliedro.Billing.Domain.View_Ciudad.Entities;
+namespace Poliedro.Billing.Domain.Ciudad.Entities;
 
 public class View_CiudadEntity
 {
@@ -8,5 +8,5 @@ public class View_CiudadEntity
     public int Id { get; set; }
     public string Descripcion { get; set; }
     public int Iddepartamento { get; set; }
-   
+
 }

@@ -2,4 +2,5 @@
 
 namespace Poliedro.Billing.Application.Estado.Commands;
 
-public record CreateEstadoCommand(string Descripcion) : IRequest<bool>;
+public record DeleteEstadoCommand(int Id) : IRequest<bool>;
+
