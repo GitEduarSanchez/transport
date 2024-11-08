@@ -10,6 +10,6 @@ public interface IControlViajeProductoRepository
     Task<ControlViajeProductoEntity> GetById(int idControlViajeProducto);
     Task<bool> DeleteAsync(int idControlViajeProducto);
 
-     Task UpdateAsync(int Id, controlViajeProductoEntity controlViajeProducto);
+    Task UpdateAsync(int idControlViajeProducto, controlViajeProductoEntity controlViajeProducto);
 }
 
