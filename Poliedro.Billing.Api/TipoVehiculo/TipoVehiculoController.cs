@@ -26,9 +26,11 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
             return CreatedAtAction(null, null);
         }
        
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] CreateConductorCommand command)
+        [HttpGet("{id}")]
+        public async Task<TipoVehiculoDto> GetAsync([FromRoute] int id)
         {
+            var getTipoVehiculoByIdQuery = new GetByTipoVehiculoQuery(id);
+            return await mediator.Send(getTipoVehiculoByIdQuery);
         }
 
         

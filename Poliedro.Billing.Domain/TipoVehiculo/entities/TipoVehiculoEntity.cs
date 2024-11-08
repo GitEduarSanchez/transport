@@ -2,7 +2,7 @@
 
 namespace Poliedro.Billing.Domain.Conductor.Entities;
 
-public class ConductorEntity
+public class tipovehiculoEntity
 {
     [Key]
     public int Id { get; set; }
