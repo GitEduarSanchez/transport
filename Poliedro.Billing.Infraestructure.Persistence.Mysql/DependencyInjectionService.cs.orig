@@ -18,9 +18,12 @@ using Poliedro.Billing.Infraestructure.Persistence.Mysql.Context;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Producto.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Estado.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Descargue.Adapter;
+<<<<<<< HEAD
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Origen.Adapter;
+=======
 using Poliedro.Billing.Domain.Estado.Entities.Ports;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Ciudad;
+>>>>>>> origin/releasecandidate/v1.0.0
 
 
 namespace Poliedro.Billing.Infraestructure.Persistence.Mysql;
