@@ -11,33 +11,33 @@ namespace Poliedro.Billing.Api.Controllers.v1.Ciudad
     [Route("api/[controller]")]
     [ApiController]
     [TypeFilter(typeof(ExceptionManager))]
-    public class CiudadController(IMediator mediator) : ControllerBase
+    public class categoria_documentoController(IMediator mediator) : ControllerBase
     {
         [HttpGet]
-        public async Task<IEnumerable<CiudadDto>> GetAll()
+        public async Task<IEnumerable<categoria_documentoDto>> GetAll()
         {
             return await mediator.Send(new GetAllActuatorsQuery());
         }
 
         [HttpGet("{id}")]
-        public async Task<CiudadDto> GetAsync([FromRoute] int id)
+        public async Task<categoria_documentoDto> GetAsync([FromRoute] int id)
         {
-            var getCiudadByIdQuery = new GetByIdCiudadQuery(id);
-            return await mediator.Send(getCiudadByIdQuery);
+            var getcategoria_documentoByIdQuery = new GetByIdcategoria_documentoQuery(id);
+            return await mediator.Send(getcategoria_documentoByIdQuery);
         }
 
 
 
         [HttpPost]
 
-        public async Task<ActionResult<bool>> Create([FromBody] CreateCiudadCommand command)
+        public async Task<ActionResult<bool>> Create([FromBody] Createcategoria_documentoCommand command)
         {
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] CreateCiudadCommand command)
+        public void Put(int id, [FromBody] Createcategoria_documentoCommand command)
         {
         }
 
