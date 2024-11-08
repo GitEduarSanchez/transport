@@ -6,7 +6,7 @@ using Poliedro.Billing.Application.categoria_documento.Dto;
 using Poliedro.Billing.Application.categoria_documento.Query;
 using Poliedro.Billing.Application.categoria_documento.Commands;
 
-namespace Poliedro.Billing.Api.Controllers.v1.Ciudad
+namespace Poliedro.Billing.Api.Controllers.v1.categoria_documento
 {
     [Route("api/[controller]")]
     [ApiController]

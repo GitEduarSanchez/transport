@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using Poliedro.Billing.Application.Ciudad.Dto;
+using Poliedro.Billing.Application.categoria_documento.Dto;
 
-namespace Poliedro.Billing.Application.Ciudad.Query;
+namespace Poliedro.Billing.Application.categoria_documento.Query;
 
-public record GetByIdCiudadQuery(int Id): IRequest<CiudadDto>;
+public record GetByIdcategoria_documentoQuery(int Id): IRequest<categoria_documentoDto>;
 

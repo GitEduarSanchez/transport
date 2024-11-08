@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using Poliedro.Billing.Application.Ciudad.Dto;
-namespace Poliedro.Billing.Application.Ciudad.Query;
+using Poliedro.Billing.Application.categoria_documento.Dto;
+namespace Poliedro.Billing.Application.categoria_documento.Query;
 
-public record GetAllActuatorsQuery: IRequest<IEnumerable<CiudadDto>>;
+public record GetAllActuatorsQuery: IRequest<IEnumerable<categoria_documentoDto>>;
 

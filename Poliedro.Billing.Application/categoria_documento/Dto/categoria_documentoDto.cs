@@ -1,4 +1,4 @@
-﻿namespace Poliedro.Billing.Application.Ciudad.Dto;
+﻿namespace Poliedro.Billing.Application.categoria_documento.Dto;
 
-public record CiudadDto(int Id, string Descripcion,int Iddepartamento);
+public record categoria_documentoDto(int Id, string Descripcion);
 

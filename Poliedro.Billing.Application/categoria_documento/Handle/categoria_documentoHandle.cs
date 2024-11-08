@@ -1,17 +1,17 @@
 ﻿using MediatR;
-using Poliedro.Billing.Domain.Ciudad.Ports;
-using Poliedro.Billing.Domain.Ciudad.Entities;
-using Poliedro.Billing.Application.Ciudad.Commands;
+using Poliedro.Billing.Domain.categoria_documento.Ports;
+using Poliedro.Billing.Domain.categoria_documento.Entities;
+using Poliedro.Billing.Application.categoria_documento.Commands;
 
 
-namespace Poliedro.Billing.Application.Ciudad.Handle;
+namespace Poliedro.Billing.Application.categoria_documento.Handle;
 
-public class CiudadHandle(ICiudadRepository _ciudadRepository) : IRequestHandler<CreateCiudadCommand, bool>
+public class categoria_documentoHandle(Icategoria_documentoRepository _categoria_documentoRepository) : IRequestHandler<Createcategoria_documentoCommand, bool>
 {
-    public async Task<bool> Handle(CreateCiudadCommand request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(Createcategoria_documentoCommand request, CancellationToken cancellationToken)
     {
-        CiudadEntity ciudad = new() { Descripcion = request.descripcion, Iddepartamento=request.iddepartamento };
-        return await _ciudadRepository.SaveAsync(ciudad); 
+        categoria_documentoEntity categoria_documento = new() { Descripcion = request.descripcion};
+        return await _categoria_documentoRepository.SaveAsync(categoria_documento); 
     }
     
 }

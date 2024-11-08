@@ -1,18 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Poliedro.Billing.Domain.Ciudad.Entities;
-using Poliedro.Billing.Domain.Ciudad.Ports;
+using Poliedro.Billing.Domain.categoria_documento.Entities;
+using Poliedro.Billing.Domain.categoria_documento.Ports;
 
 namespace Poliedro.Billing.Infraestructure.Persistence.Mysql.EntityFramework.EntityConfigurations;
 
-public class CiudadConfiguration
+public class categoria_documentoConfiguration
 {
-    public CiudadConfiguration(EntityTypeBuilder<CiudadEntity> builder)
+    public categoria_documentoConfiguration(EntityTypeBuilder<categoria_documentoEntity> builder)
     {
-        builder.ToTable("ciudad");
+        builder.ToTable("categoria_documento");
         builder.HasKey(x => x.Id);
-        builder.Property(x => x.Id).HasColumnName("idciudad");
+        builder.Property(x => x.Id).HasColumnName("idcategoria_documento");
         builder.Property(x => x.Descripcion).HasColumnName("descripcion");
-        builder.Property(x => x.Iddepartamento).HasColumnName("iddepartamento");
+    
     }
 }

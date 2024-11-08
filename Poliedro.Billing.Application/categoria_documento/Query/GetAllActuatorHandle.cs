@@ -1,19 +1,19 @@
 ﻿using MediatR;
-using Poliedro.Billing.Application.Ciudad.Dto;
-using Poliedro.Billing.Domain.Ciudad.Ports;
+using Poliedro.Billing.Application.categoria_documento.Dto;
+using Poliedro.Billing.Domain.categoria_documento.Ports;
 
-namespace Poliedro.Billing.Application.Ciudad.Query;
+namespace Poliedro.Billing.Application.categoria_documento.Query;
 
-public class GetAllActuatorHandle(ICiudadRepository _ciudadRepository) : IRequestHandler<GetAllActuatorsQuery, IEnumerable<CiudadDto>>
+public class GetAllActuatorHandle(Icategoria_documentoRepository _categoria_documentoRepository) : IRequestHandler<GetAllActuatorsQuery, IEnumerable<categoria_documentoDto>>
 {
-    public async Task<IEnumerable<CiudadDto>> Handle(GetAllActuatorsQuery request, CancellationToken cancellationToken)
+    public async Task<IEnumerable<categoria_documentoDto>> Handle(GetAllActuatorsQuery request, CancellationToken cancellationToken)
     {
-        var entities = await _ciudadRepository.GetAllAsync();
-        return entities.Select(ciudad => new CiudadDto
+        var entities = await _categoria_documentoRepository.GetAllAsync();
+        return entities.Select(categoria_documento => new categoria_documentoDto
         (
-            Id: ciudad.Id,
-            Descripcion: ciudad.Descripcion,
-            Iddepartamento: ciudad.Iddepartamento
+            Id: categoria_documento.Id,
+            Descripcion: categoria_documento.Descripcion
+           
         ));
     }
 }

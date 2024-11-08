@@ -8,6 +8,7 @@ using Poliedro.Billing.Domain.ControlViaje.Entities;
 using Poliedro.Billing.Domain.Estado.Entities;
 using Poliedro.Billing.Domain.Descargue.Entities;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.EntityFramework.EntityConfigurations;
+using Poliedro.Billing.Domain.categoria_documento.Entities;
 
 namespace Poliedro.Billing.Infraestructure.Persistence.Mysql.Context;
 
@@ -22,6 +23,7 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
     public DbSet<DescargueEntity> Descargue { get; set; }
     public DbSet<View_CiudadEntity> View_Ciudad { get; set; }
     public DbSet<ControlViajeProductoEntity> ControlViajeProducto { get; set; }
+     public DbSet<categoria_documentoEntity> categoria_documento { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -40,8 +42,10 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
         new ControlViajeProductoConfiguration(modelBuilder.Entity<ControlViajeProductoEntity>());
         new DescargueConfiguration(modelBuilder.Entity<DescargueEntity>());
         new EstadoConfiguration(modelBuilder.Entity<EstadoEntity>());
+        new categoria_documentoConfiguration(modelBuilder.Entity<categoria_documentoEntity>());
     }
     }
+    
 
 
 
