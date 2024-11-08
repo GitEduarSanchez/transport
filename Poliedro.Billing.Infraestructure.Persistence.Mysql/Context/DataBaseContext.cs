@@ -10,6 +10,7 @@ using Poliedro.Billing.Domain.Producto.Entities;
 using Poliedro.Billing.Domain.ControlViaje.Entities;
 using Poliedro.Billing.Domain.Estado.Entities;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.EntityFramework.EntityConfigurations;
+using Poliedro.Billing.Domain.Origen.Entities;
 
 namespace Poliedro.Billing.Infraestructure.Persistence.Mysql.Context;
 
@@ -22,6 +23,9 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
     public DbSet<EstadoEntity> Estado { get; set; }
     public DbSet<DescargueEntity> Descargue { get; set; }
     public DbSet<DestinoEntity> Destino { get; set; }
+    
+    public DbSet<OrigenEntity> Origen { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -35,6 +39,7 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
         new ConceptoConfiguration(modelBuilder.Entity<ConceptoEntity>());
         new DestinoConfiguration(modelBuilder.Entity<DestinoEntity>());
         new EstadoConfiguration(modelBuilder.Entity<EstadoEntity>());
+        new OrigenConfiguration(modelBuilder.Entity<OrigenEntity>());
     }
     }
 
