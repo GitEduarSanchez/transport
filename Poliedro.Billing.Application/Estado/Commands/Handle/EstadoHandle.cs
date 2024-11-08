@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using Poliedro.Billing.Application.Estado.Commands.CreateServerCommand;
+using Poliedro.Billing.Application.Estado.Commands;
 using Poliedro.Billing.Domain.Estado.Entities;
-using Poliedro.Billing.Domain.Estado.Ports;
+using Poliedro.Billing.Domain.Estado.Entities.Ports;
 
-namespace Poliedro.Billing.Application.Estado.Handle;
+namespace Poliedro.Billing.Application.Estado.Commands.Handle;
 
 public class EstadoHandle(IEstadoRepository _estadoRepository) : IRequestHandler<CreateEstadoCommand, bool>
 {

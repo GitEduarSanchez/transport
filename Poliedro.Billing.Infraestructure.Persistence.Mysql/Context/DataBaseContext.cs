@@ -1,5 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Poliedro.Billing.Domain.Concepto.Entities;
+using Poliedro.Billing.Domain.Ciudad.Entities;
+using Poliedro.Billing.Domain.ControlViajeProducto.Entities;
+using Poliedro.Billing.Domain.Ciudad.Entities;
+using Poliedro.Billing.Domain.ControlViajeProducto.Entities;
 using Poliedro.Billing.Domain.Conductor.Entities;
 using Poliedro.Billing.Domain.Destino.Entities;
 using Poliedro.Billing.Domain.Producto.Entities;
