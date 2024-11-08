@@ -2,7 +2,7 @@
 using Poliedro.Billing.Application.Concepto.Dto;
 using Poliedro.Billing.Domain.Concepto.Ports;
 
-namespace Poliedro.Billing.Application.Concepto.Query;
+namespace Poliedro.Billing.Application.Concepto.Query.Query;
 
 public class GetByIdConceptoHandle(IConceptoRepository conceptoRepository) : IRequestHandler<GetByIdConceptoQuery, ConceptoDto>
 {

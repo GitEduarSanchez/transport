@@ -2,11 +2,11 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
-using Poliedro.Billing.Application.Ciudad.Commands.CreateServerCommand;
 using Poliedro.Billing.Application.Ciudad.Dto;
 using Poliedro.Billing.Application.Ciudad.Query;
+using Poliedro.Billing.Application.Ciudad.Commands;
 
-namespace Poliedro.Billing.Api.Controllers.v1.Server
+namespace Poliedro.Billing.Api.Controllers.v1.Ciudad
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -26,22 +26,22 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
             return await mediator.Send(getCiudadByIdQuery);
         }
 
-        
+
 
         [HttpPost]
-                
+
         public async Task<ActionResult<bool>> Create([FromBody] CreateCiudadCommand command)
         {
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
-       
+
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] CreateCiudadCommand command)
         {
         }
 
-        
+
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
@@ -62,5 +62,5 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
         }
     }
 
-    
+
 }

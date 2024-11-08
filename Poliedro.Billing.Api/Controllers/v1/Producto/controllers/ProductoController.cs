@@ -2,24 +2,24 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
-using Poliedro.Billing.Application.Producto.Commands.CreateServerCommand;
+using Poliedro.Billing.Application.Producto.commands;
 using Poliedro.Billing.Application.Producto.Dto;
 using Poliedro.Billing.Application.Producto.Query;
 
-namespace Poliedro.Billing.Api.Controllers.v1.Server
+namespace Poliedro.Billing.Api.Controllers.v1.Producto.controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [TypeFilter(typeof(ExceptionManager))]
     public class ProductoController(IMediator mediator) : ControllerBase
     {
-       [HttpGet]
+        [HttpGet]
         public async Task<IEnumerable<ProductoDto>> GetAll()
         {
             return await mediator.Send(new GetAllActuatorsQuery());
         }
 
-         [HttpGet("{id}")]
+        [HttpGet("{id}")]
         public async Task<ProductoDto> GetAsync([FromRoute] int id)
         {
             var getProductoByIdQuery = new GetByIdProductoQuery(id);
@@ -29,19 +29,19 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
 
 
         [HttpPost]
-                
+
         public async Task<ActionResult<bool>> Create([FromBody] CreateProductoCommand command)
         {
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
-       
+
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] CreateProductoCommand command)
         {
         }
 
-        
+
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
@@ -60,9 +60,9 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
                 Console.WriteLine($"log: {failure.ErrorMessage}");
             }
         }
-    
 
 
-        
+
+
     }
 }
