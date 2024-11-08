@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
 using Poliedro.Billing.Application.ControlViaje.Query;
 using Poliedro.Billing.Application.ControlViaje.Commands.CreateServerCommand;
+using Poliedro.Billing.Application.ControlViaje.Commands.CreateServerCommand;
 using Poliedro.Billing.Application.ControlViaje.Dto;
-namespace Poliedro.Billing.Api.Controllers.v1.Server
+using Poliedro.Billing.Application.ControlViaje.Commands;
+namespace Poliedro.Billing.Api.Controllers.v1.ControlViaje.Controllers
 
 {
     [Route("api/[controller]")]
@@ -14,16 +16,16 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
     public class ControlViajeController(IMediator mediator) : ControllerBase
     {
 
-        
+
         [HttpGet]
         public async Task<IEnumerable<ControlViajeDto>> GetAll()
         {
             return await mediator.Send(new GetAllActuatorsQuery());
         }
 
-       
 
-         [HttpGet("{id}")]
+
+        [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
@@ -31,19 +33,19 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
 
 
         [HttpPost]
-                
+
         public async Task<ActionResult<bool>> Create([FromBody] CreateControlViajeCommand command)
         {
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
-       
+
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] CreateControlViajeCommand command)
         {
         }
 
-        
+
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
@@ -64,5 +66,5 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
         }
     }
 
-  
+
 }

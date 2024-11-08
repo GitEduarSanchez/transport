@@ -1,9 +1,8 @@
 ﻿using MediatR;
 using Poliedro.Billing.Application.Concepto.Dto;
-using Poliedro.Billing.Application.Concepto.Query;
 using Poliedro.Billing.Domain.Concepto.Ports;
 
-namespace Poliedro.Billing.Application.Conductor.Query;
+namespace Poliedro.Billing.Application.Concepto.Query.Query;
 
 public class GetAllConceptoHandle(IConceptoRepository _conceptoRepository) : IRequestHandler<GetAllConceptoQuery, IEnumerable<ConceptoDto>>
 {

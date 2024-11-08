@@ -2,13 +2,11 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
-using Poliedro.Billing.Application.Conductor.Commands.CreateServerCommand;
+using Poliedro.Billing.Application.Conductor.Commands;
 using Poliedro.Billing.Application.Conductor.Dto;
 using Poliedro.Billing.Application.Conductor.Query;
-using Poliedro.Billing.Application.Producto.Commands.CreateServerCommand;
-using System.ComponentModel.DataAnnotations;
 
-namespace Poliedro.Billing.Api.Controllers.v1.Server
+namespace Poliedro.Billing.Api.Controllers.v1.Vehiculo
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -30,19 +28,19 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
 
 
         [HttpPost]
-                
+
         public async Task<ActionResult<bool>> Create([FromBody] CreateConductorCommand command)
         {
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
-       
+
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] CreateConductorCommand command)
         {
         }
 
-        
+
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

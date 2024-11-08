@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Poliedro.Billing.Application.ControlViaje.Commands.CreateServerCommand;
+using Poliedro.Billing.Application.ControlViaje.Commands;
 using Poliedro.Billing.Domain.ControlViaje.Entities;
 using Poliedro.Billing.Domain.ControlViaje.Ports;
 
