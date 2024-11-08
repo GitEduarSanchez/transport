@@ -17,7 +17,12 @@ builder.Services.AddRouting(routing => routing.LowercaseUrls = true);
 builder.Services.AddHostedService<Worker>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 var app = builder.Build();
-
+app.UseCors(options =>
+{
+    options.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader();
+});
 app.UseSwagger();
 app.UseSwaggerUI(options =>
 {
@@ -25,12 +30,7 @@ app.UseSwaggerUI(options =>
     options.RoutePrefix = string.Empty;
 });
 
-app.UseCors(options =>
-{
-    options.AllowAnyOrigin()
-           .AllowAnyMethod()
-           .AllowAnyHeader();
-});
-
 app.MapControllers();
 app.Run();
+
+

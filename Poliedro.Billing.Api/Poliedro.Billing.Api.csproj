@@ -25,4 +25,8 @@
     <ProjectReference Include="..\WorkerServiceBilling\WorkerServiceBilling.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Destino\controllers\" />
+  </ItemGroup>
+
 </Project>

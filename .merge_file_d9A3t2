@@ -2,40 +2,44 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
-using Poliedro.Billing.Application.Conductor.Query;
-using Poliedro.Billing.Application.ControlViaje.Query;
+using Poliedro.Billing.Application.Destino.Commands.CreateServerCommand;
+using Poliedro.Billing.Application.Destino.Dto;
+using Poliedro.Billing.Application.Destino.Query;
+using System.ComponentModel.DataAnnotations;
 
 namespace Poliedro.Billing.Api.Controllers.v1.Server
 {
     [Route("api/[controller]")]
     [ApiController]
     [TypeFilter(typeof(ExceptionManager))]
-    public class CiudadController(IMediator mediator) : ControllerBase
+    public class DestinoController(IMediator mediator) : ControllerBase
     {
         [HttpGet]
-        public async Task<IEnumerable<CiudadDto>> GetAll()
+        public async Task<IEnumerable<DestinoDto>> GetAll()
         {
-            return (IEnumerable<CiudadDto>)await mediator.Send(new GetAllActuatorsQuery());
+            return await mediator.Send(new GetAllActuatorsQuery());
         }
 
         [HttpGet("{id}")]
-        public async Task<CiudadDto> GetAsync([FromRoute] int id)
+        public async Task<DestinoDto> GetAsync([FromRoute] int id)
         {
-            var getCiudadByIdQuery = new GetByIdCiudadQuery(id);
-            return await mediator.Send(getCiudadByIdQuery);
+            var getDestinoByIdQuery = new GetByIdDestinoQuery(id);
+            return await mediator.Send(getDestinoByIdQuery);
         }
 
-        
 
         [HttpPost]
                 
-        public async Task<ActionResult<bool>> Create([FromBody] CreateCiudadCommand command)
+        public async Task<ActionResult<bool>> Create([FromBody] CreateDestinoCommand command)
         {
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
        
         [HttpPut("{id}")]
+        public void Put(int id, [FromBody] CreateDestinoCommand command)
+        {
+        }
 
         
         [HttpDelete("{id}")]
@@ -58,21 +62,4 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
         }
     }
 
-    public class CiudadDto
-    {
-    }
-
-    internal class GetByIdCiudadQuery : IRequest<CiudadDto>
-    {
-        private int id;
-
-        public GetByIdCiudadQuery(int id)
-        {
-            this.id = id;
-        }
-    }
-
-    public class CreateCiudadCommand
-    {
-    }
 }
