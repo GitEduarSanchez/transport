@@ -1,39 +1,46 @@
-﻿using FluentValidation.Results;
+using FluentValidation.Results;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
-using Poliedro.Billing.Application.Conductor.Commands.CreateServerCommand;
+using Poliedro.Billing.Application.TipoVehiculo.Commands.CreateServerCommand;
+using Poliedro.Billing.Application.TipoVehiculo.Dto;
+using Poliedro.Billing.Application.TipoVehiculo.Query;
 
-namespace Poliedro.Billing.Api.Controllers.v1.Server
+namespace Poliedro.Billing.Api.Controllers.v1.TipoVehiculo
 {
     [Route("api/[controller]")]
     [ApiController]
     [TypeFilter(typeof(ExceptionManager))]
     public class TipoVehiculoController(IMediator mediator) : ControllerBase
     {
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        public async Task<IEnumerable<TipoVehiculoDto>> GetAll()
         {
-            return "value";
+            return await mediator.Send(new GetAllActuatorsQuery());
+        }
+
+        [HttpGet("{id}")]
+        public async Task<TipoVehiculoDto> GetAsync([FromRoute] int id)
+        {
+            var getTipoVehiculoByIdQuery = new GetByIdTipoVehiculoQuery(id);
+            return await mediator.Send(getTipoVehiculoByIdQuery);
         }
 
 
         [HttpPost]
-                
-        public async Task<ActionResult<bool>> Create([FromBody] CreateConductorCommand command)
+
+        public async Task<ActionResult<bool>> Create([FromBody] CreateTipoVehiculoCommand command)
         {
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
-       
-        [HttpGet("{id}")]
-        public async Task<TipoVehiculoDto> GetAsync([FromRoute] int id)
+
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] CreateTipoVehiculoCommand command)
         {
-            var getTipoVehiculoByIdQuery = new GetByTipoVehiculoQuery(id);
-            return await mediator.Send(getTipoVehiculoByIdQuery);
         }
 
-        
+
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

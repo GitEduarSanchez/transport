@@ -9,8 +9,8 @@ public class TipoVehiculoConfiguration
     public TipoVehiculoConfiguration(EntityTypeBuilder<TipoVehiculoEntity> builder)
     {
         builder.ToTable("TipoVehiculo");
-        builder.HasKey(x => x.idtipovehiculo);
-        builder.Property(x => x.idtipovehiculo).HasColumnName("idtipovehiculo");
+        builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id).HasColumnName("idtipovehiculo");
         builder.Property(x => x.descripcion).HasColumnName("descripcion");
     }
 }

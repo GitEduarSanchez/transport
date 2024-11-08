@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using Poliedro.Billing.Application.Ciudad.Dto;
-namespace Poliedro.Billing.Application.Ciudad.Query;
+using Poliedro.Billing.Application.TipoVehiculo.Dto;
+namespace Poliedro.Billing.Application.TipoVehiculo.Query;
 
-public record GetAllActuatorsQuery: IRequest<IEnumerable<CiudadDto>>;
+public record GetAllActuatorsQuery: IRequest<IEnumerable<TipoVehiculoDto>>;
 

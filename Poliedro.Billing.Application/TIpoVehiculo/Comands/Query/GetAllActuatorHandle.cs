@@ -1,19 +1,19 @@
 ﻿using MediatR;
-using Poliedro.Billing.Application.Ciudad.Dto;
-using Poliedro.Billing.Domain.Ciudad.Ports;
+using Poliedro.Billing.Application.TipoVehiculo.Dto;
+using Poliedro.Billing.Domain.TipoVehiculo.Ports;
 
-namespace Poliedro.Billing.Application.Ciudad.Query;
+namespace Poliedro.Billing.Application.TipoVehiculo.Query;
 
-public class GetAllActuatorHandle(ICiudadRepository _ciudadRepository) : IRequestHandler<GetAllActuatorsQuery, IEnumerable<CiudadDto>>
+public class GetAllActuatorHandle(ITipoVehiculoRepository _tipovehiculoRepository) : IRequestHandler<GetAllActuatorsQuery, IEnumerable<TipoVehiculoDto>>
 {
-    public async Task<IEnumerable<CiudadDto>> Handle(GetAllActuatorsQuery request, CancellationToken cancellationToken)
+    public async Task<IEnumerable<TipoVehiculoDto>> Handle(GetAllActuatorsQuery request, CancellationToken cancellationToken)
     {
-        var entities = await _ciudadRepository.GetAllAsync();
-        return entities.Select(ciudad => new CiudadDto
+        var entities = await _tipovehiculoRepository.GetAllAsync();
+        return entities.Select(tipovehiculo => new TipoVehiculoDto
         (
-            Id: ciudad.Id,
-            Descripcion: ciudad.Descripcion,
-            Iddepartamento: ciudad.Iddepartamento
+            id: tipovehiculo.IdTipoVehiculo,
+            descripcion: tipovehiculo.descripcion
+           
         ));
     }
 }

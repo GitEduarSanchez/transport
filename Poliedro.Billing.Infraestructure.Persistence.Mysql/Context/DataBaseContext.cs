@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Poliedro.Billing.Domain.Concepto.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Poliedro.Billing.Domain.Ciudad.Entities;
 using Poliedro.Billing.Domain.TipoVehiculo.Entities;
 using Poliedro.Billing.Domain.ControlViajeProducto.Entities;
@@ -20,8 +19,7 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
   
     public DbSet<TipoVehiculoEntity> TipoVehiculo { get; set; }
     public DbSet<ConductorEntity> Conductor { get; set; }
- public DbSet<VehiculoEntity> Vehiculo { get; set; }
- public DbSet<VehiculoEntity> Vehiculo { get; set; }
+    public DbSet<TipoVehiculoEntity> Tipovehiculo { get; set; }
     public DbSet<ProductoEntity> Producto { get; set; } 
     public DbSet<ConceptoEntity> Concepto { get; set; }
     public DbSet<ControlViajeEntity> ControlViaje { get; set; }
@@ -44,8 +42,6 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
         new ConductorConfiguration(modelBuilder.Entity<ConductorEntity>());
         new TipoVehiculoConfiguration(modelBuilder.Entity<TipoVehiculoEntity>());
         new ConductorConfiguration(modelBuilder.Entity<ConductorEntity>());
-         new VehiculoConfiguration(modelBuilder.Entity<VehiculoEntity>());
-         new VehiculoConfiguration(modelBuilder.Entity<VehiculoEntity>());
         new ProductoConfiguration(modelBuilder.Entity<ProductoEntity>());
         new ConceptoConfiguration(modelBuilder.Entity<ConceptoEntity>());
         new ControlViajeConfiguration(modelBuilder.Entity<ControlViajeEntity>());
@@ -58,19 +54,19 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
     }
     }
 
+internal class TipoVehiculoConfiguration
+{
+    private EntityTypeBuilder<TipoVehiculoEntity> entityTypeBuilder;
 internal class VehiculoConfiguration
 {
-    private EntityTypeBuilder<VehiculoEntity> entityTypeBuilder;
-internal class VehiculoConfiguration
-{
-    private EntityTypeBuilder<VehiculoEntity> entityTypeBuilder;
+    private EntityTypeBuilder<TipoVehiculoEntity> entityTypeBuilder;
 
-    public VehiculoConfiguration(EntityTypeBuilder<VehiculoEntity> entityTypeBuilder)
+    public VehiculoConfiguration(EntityTypeBuilder<TipoVehiculoEntity> entityTypeBuilder)
     {
         this.entityTypeBuilder = entityTypeBuilder;
     }
 }
-    public VehiculoConfiguration(EntityTypeBuilder<VehiculoEntity> entityTypeBuilder)
+    public TipoVehiculoConfiguration(EntityTypeBuilder<TipoVehiculoEntity> entityTypeBuilder)
     {
         this.entityTypeBuilder = entityTypeBuilder;
     }

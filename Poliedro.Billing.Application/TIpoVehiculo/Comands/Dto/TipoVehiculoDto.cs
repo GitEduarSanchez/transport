@@ -1,4 +1,5 @@
-﻿namespace Poliedro.Billing.Application.Conductor.Dto;
+﻿namespace Poliedro.Billing.Application.TipoVehiculo.Dto;
 
-public record TipovehiculoDto(int Id, string Descripcion);
+public record TipoVehiculoDto(int id, string descripcion);
+
 

@@ -1,15 +1,15 @@
 ﻿using MediatR;
-using Poliedro.Billing.Application.Conductor.Commands.CreateServerCommand;
-using Poliedro.Billing.Domain.Conductor.Entities;
-using Poliedro.Billing.Domain.Conductor.Ports;
+using Poliedro.Billing.Application.TipoVehiculo.Commands.CreateServerCommand;
+using Poliedro.Billing.Domain.TipoVehiculo.Entities;
+using Poliedro.Billing.Domain.TipoVehiculo.Ports;
 
-namespace Poliedro.Billing.Application.Conductor.Handle;
+namespace Poliedro.Billing.Application.TipoVehiculo.Handle;
 
-public class ConductorHandle(IConductorRepository _conductorRepository) : IRequestHandler<CreateConductorCommand, bool>
+public class TipoVehiculoHandle(ITipoVehiculoRepository _tipovehiculoRepository) : IRequestHandler<CreateTipoVehiculoCommand, bool>
 {
-    public async Task<bool> Handle(CreateConductorCommand request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(CreateTipoVehiculoCommand request, CancellationToken cancellationToken)
     {
-        ConductorEntity conductor = new() { Name = request.Name };
-        return await _conductorRepository.SaveAsync(conductor);
+        TipoVehiculoEntity tipovehiculo = new() { descripcion = request.Descripcion};
+        return await _tipovehiculoRepository.SaveAsync(tipovehiculo);
     }
 }
