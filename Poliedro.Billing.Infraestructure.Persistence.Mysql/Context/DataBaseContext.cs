@@ -17,7 +17,6 @@ namespace Poliedro.Billing.Infraestructure.Persistence.Mysql.Context;
 public class DataBaseContext(DbContextOptions options) : DbContext(options)
 {
   
-    public DbSet<TipoVehiculoEntity> TipoVehiculo { get; set; }
     public DbSet<ConductorEntity> Conductor { get; set; }
     public DbSet<TipoVehiculoEntity> Tipovehiculo { get; set; }
     public DbSet<ProductoEntity> Producto { get; set; } 

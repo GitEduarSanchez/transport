@@ -1,4 +1,5 @@
 using Poliedro.Billing.Domain.TipoVehiculo.Entities;
+using Poliedro.Billing.Domain.TipoVehiculo.Request;
 
 namespace Poliedro.Billing.Domain.TipoVehiculo.Ports;
 

@@ -45,6 +45,7 @@ public static class DependencyInjectionService
         services.AddTransient<IControlViajeProductoRepository, ControlViajeProductoRepository>();
         services.AddTransient<IDescargueRepository, DescargueRepository>();
         services.AddTransient<IOrigenRepository, OrigenRepository>();
+        services.AddTransient<ITipoVehiculoRepository, TipoVehiculoRepository>();
         return services;
     }
 }
