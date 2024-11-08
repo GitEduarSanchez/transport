@@ -18,9 +18,9 @@ public class categoria_documentoRepository(DataBaseContext _context) : Icategori
         return await _context.categoria_documento.FirstAsync(x => x.Id == Id);
     }
 
-    public async Task<bool> SaveAsync(categoria_documentoEntity Ciudad)
+    public async Task<bool> SaveAsync(categoria_documentoEntity categoria_Documento)
     {
-        await _context.categoria_documento.AddAsync(categoria_documento);
+        await _context.categoria_documento.AddAsync(categoria_Documento);
         return await _context.SaveChangesAsync() > 0;
     }
 }
