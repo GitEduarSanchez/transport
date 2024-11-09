@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
+using Poliedro.Billing.Application.Origen.Commands;
 using Poliedro.Billing.Application.Origen.Commands.CreateServerCommand;
 using Poliedro.Billing.Application.Origen.Dto;
 using Poliedro.Billing.Application.Origen.Query;
@@ -43,10 +44,11 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
 
         
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult<bool>> Delete(int id)
         {
+            var result = await mediator.Send(new DeleteOrigenCommand(id));
+            return Ok(result);
         }
-
         private IActionResult HandleValidationErrors(List<ValidationFailure> errors)
         {
             GetErrorValidator(errors);
