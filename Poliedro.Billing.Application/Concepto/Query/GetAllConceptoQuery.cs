@@ -1,7 +1,8 @@
 ﻿using MediatR;
 using Poliedro.Billing.Application.Concepto.Dto;
 
-namespace Poliedro.Billing.Application.Concepto.Query.Query;
+
+namespace Poliedro.Billing.Application.Concepto.Commands.Query;
 
 public record GetAllConceptoQuery : IRequest<IEnumerable<ConceptoDto>>;
 

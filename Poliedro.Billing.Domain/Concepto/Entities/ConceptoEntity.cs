@@ -5,6 +5,6 @@ namespace Poliedro.Billing.Domain.Concepto.Entities;
 public class ConceptoEntity
 {
     [Key]
-    public int IdConcepto { get; set; }
+    public int idConcepto { get; set; }
     public string descripcion { get; set; }
 }

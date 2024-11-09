@@ -3,10 +3,10 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
 using Poliedro.Billing.Application.Concepto.Commands;
+using Poliedro.Billing.Application.Concepto.Commands.Query;
 using Poliedro.Billing.Application.Concepto.Dto;
-using Poliedro.Billing.Application.Concepto.Query;
-using Poliedro.Billing.Application.Concepto.Query.Query;
-using System.ComponentModel.DataAnnotations;
+using Poliedro.Billing.Application.Estado.Commands;
+
 
 namespace Poliedro.Billing.Api.Controllers.v1.Concepto.Controllers
 {
@@ -37,15 +37,24 @@ namespace Poliedro.Billing.Api.Controllers.v1.Concepto.Controllers
             return CreatedAtAction(null, null);
         }
 
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] CreateConceptoCommand command)
+         [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateEstado(int id, [FromBody] UpdateConceptoCommand command)
         {
+            if (id != command.Id)
+            {
+                return BadRequest();
+            }
+
+            await mediator.Send(command);
+            return NoContent();
         }
 
 
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+         [HttpDelete("{id}")]
+        public async Task<ActionResult<bool>> Delete(int id)
         {
+            var result = await mediator.Send(new DeleteConceptoCommand(id));
+            return Ok(result);
         }
 
         private IActionResult HandleValidationErrors(List<ValidationFailure> errors)

@@ -1,4 +1,4 @@
 ﻿namespace Poliedro.Billing.Application.Concepto.Dto;
 
-public record ConceptoDto(int IdConcepto, string descripcion);
+public record ConceptoDto(int idConcepto, string descripcion);
 
