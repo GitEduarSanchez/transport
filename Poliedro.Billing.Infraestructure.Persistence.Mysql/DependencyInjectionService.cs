@@ -42,7 +42,7 @@ public static class DependencyInjectionService
         services.AddTransient<IEstadoRepository, EstadoRepository>();
         services.AddTransient<ICiudadRepository, CiudadRepository>();
         services.AddTransient<IView_CiudadRepository, View_CiudadRepository>();
-        services.AddTransient<IControlViajeProductoRepository, ControlViajeProductoRepository>();
+        services.AddTransient<IControlViajeProductoRepository, controlViajeProductoRepository>();
         services.AddTransient<IDescargueRepository, DescargueRepository>();
         services.AddTransient<IOrigenRepository, OrigenRepository>();
         services.AddTransient<ITipoVehiculoRepository, TipoVehiculoRepository>();

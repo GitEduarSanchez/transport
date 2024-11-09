@@ -37,15 +37,25 @@ namespace Poliedro.Billing.Api.Controllers.v1.ControlViajeProducto.controllers
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] CreateControlViajeProductoCommand command)
+        public async Task<IActionResult> UpdateEstado(int id, [FromBody] UpdatecontrolViajeProductoCommand command)
         {
+            if (id != command.idControlViajeProducto)
+            {
+                return BadRequest();
+            }
+
+            await mediator.Send(command);
+            return NoContent();
         }
 
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult<bool>> Delete(int id)
         {
+            var result = await mediator.Send(new DeletecontrolViajeProductoCommand(id));
+            return Ok(result);
         }
+
 
         private IActionResult HandleValidationErrors(List<ValidationFailure> errors)
         {
