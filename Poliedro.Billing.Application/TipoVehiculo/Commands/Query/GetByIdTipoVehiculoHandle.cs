@@ -9,6 +9,6 @@ public class GetByIdTipoVehiculoHandle(ITipoVehiculoRepository TipoVehiculoRepos
     public async Task<TipoVehiculoDto> Handle(GetByIdTipoVehiculoQuery request, CancellationToken cancellationToken)
     {
         var getByIdTipoVehiculo = await TipoVehiculoRepository.GetById(request.Id);
-        return new TipoVehiculoDto(id: getByIdTipoVehiculo.Id, descripcion: getByIdTipoVehiculo.descripcion);
+        return new TipoVehiculoDto(id: getByIdTipoVehiculo.IdTipoVehiculo, descripcion: getByIdTipoVehiculo.descripcion);
     }
 }

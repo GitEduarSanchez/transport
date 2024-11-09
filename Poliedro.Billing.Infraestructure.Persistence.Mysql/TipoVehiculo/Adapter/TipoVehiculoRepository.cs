@@ -25,7 +25,7 @@ public class TipoVehiculoRepository(DataBaseContext _context) : ITipoVehiculoRep
 
     public async Task<TipoVehiculoEntity> GetById(int Id)
     {
-        return await _context.Tipovehiculo.FirstAsync(x => x.Id == Id);
+        return await _context.Tipovehiculo.FirstAsync(x => x.IdTipoVehiculo == Id);
     }
 
     public async Task<bool> SaveAsync(TipoVehiculoEntity tipovehiculo)

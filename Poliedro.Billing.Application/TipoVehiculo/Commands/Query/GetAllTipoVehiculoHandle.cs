@@ -11,7 +11,7 @@ public class GetAllTipoVehiculoQueryHandle(ITipoVehiculoRepository _tipovehiculo
         var entities = await _tipovehiculoRepository.GetAllAsync();
         return entities.Select(tipovehiculo => new TipoVehiculoDto
         (
-            id: tipovehiculo.Id,
+            id: tipovehiculo.IdTipoVehiculo,
             descripcion: tipovehiculo.descripcion
         ));
     }

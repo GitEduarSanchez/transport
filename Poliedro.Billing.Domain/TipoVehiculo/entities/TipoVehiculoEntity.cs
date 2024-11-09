@@ -7,5 +7,4 @@ public class TipoVehiculoEntity
     [Key]
     public int IdTipoVehiculo { get; set; }
     public string descripcion { get; set; }
-    public int Id { get; set; }
 }
