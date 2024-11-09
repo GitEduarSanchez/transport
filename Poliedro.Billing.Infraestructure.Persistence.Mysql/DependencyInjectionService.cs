@@ -9,7 +9,6 @@ using Poliedro.Billing.Domain.ControlViajeProducto.Ports;
 using Poliedro.Billing.Domain.Descargue.Ports;
 using Poliedro.Billing.Domain.Ports;
 using Poliedro.Billing.Domain.Producto.Ports;
-using Poliedro.Billing.Domain.Origen.Ports;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Concepto.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Conductor.Adapter;
@@ -21,6 +20,7 @@ using Poliedro.Billing.Infraestructure.Persistence.Mysql.Descargue.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Origen.Adapter;
 using Poliedro.Billing.Domain.Estado.Entities.Ports;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Ciudad;
+using Poliedro.Billing.Domain.Origen.Entities.Ports;
 
 
 namespace Poliedro.Billing.Infraestructure.Persistence.Mysql;

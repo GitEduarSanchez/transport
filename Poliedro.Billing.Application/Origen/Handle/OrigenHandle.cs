@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using Poliedro.Billing.Domain.Origen.Ports;
 using Poliedro.Billing.Domain.Origen.Entities;
 using Poliedro.Billing.Application.Origen.Commands.CreateServerCommand;
+using Poliedro.Billing.Domain.Origen.Entities.Ports;
 
 
 namespace Poliedro.Billing.Application.Origen.Handle;
