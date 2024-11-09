@@ -21,6 +21,8 @@ using Poliedro.Billing.Infraestructure.Persistence.Mysql.Descargue.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Origen.Adapter;
 using Poliedro.Billing.Domain.Estado.Entities.Ports;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Ciudad;
+using Poliedro.Billing.Domain.TipoVehiculo.Ports;
+using Poliedro.Billing.Infraestructure.Persistence.Mysql.TipoVehiculo.Adapter;
 
 
 namespace Poliedro.Billing.Infraestructure.Persistence.Mysql;

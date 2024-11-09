@@ -1,4 +1,5 @@
-﻿using Poliedro.Billing.Domain.TipoVehiculo.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Poliedro.Billing.Domain.TipoVehiculo.Entities;
 using Poliedro.Billing.Domain.TipoVehiculo.Ports;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Context;
 
@@ -8,36 +9,36 @@ public class TipoVehiculoRepository(DataBaseContext _context) : ITipoVehiculoRep
 {
     public async Task<bool> DeleteAsync(int Id)
     {
-        var entity = await _context.TipoVehiculo.FindAsync(Id);
+        var entity = await _context.Tipovehiculo.FindAsync(Id);
         if (entity == null)
         {
             return false;
         }
-        _context.TipoVehiculo.Remove(entity);
+        _context.Tipovehiculo.Remove(entity);
         return await _context.SaveChangesAsync() > 0;
     }
 
     public async Task<IEnumerable<TipoVehiculoEntity>> GetAllAsync()
     {
-        return await _context.TipoVehiculo.ToListAsync();
+        return await _context.Tipovehiculo.ToListAsync();
     }
 
     public async Task<TipoVehiculoEntity> GetById(int Id)
     {
-        return await _context.TipoVehiculo.FirstAsync(x => x.Id == Id);
+        return await _context.Tipovehiculo.FirstAsync(x => x.Id == Id);
     }
 
     public async Task<bool> SaveAsync(TipoVehiculoEntity tipovehiculo)
     {
-        await _context.TipoVehiculo.AddAsync(tipovehiculo);
+        await _context.Tipovehiculo.AddAsync(tipovehiculo);
         return await _context.SaveChangesAsync() > 0;
     }
 
     public async Task UpdateAsync(int Id, TipoVehiculoEntity tipovehiculo)
     {
-        var entity = await _context.TipoVehiculo.FindAsync(Id) ?? throw new KeyNotFoundException($"Entity with Id {Id} not found.");
-        entity.Descripcion = tipovehiculo.Descripcion;
-        _context.TipoVehiculo.Update(entity);
+        var entity = await _context.Tipovehiculo.FindAsync(Id) ?? throw new KeyNotFoundException($"Entity with Id {Id} not found.");
+        entity.descripcion = tipovehiculo.descripcion;
+        _context.Tipovehiculo.Update(entity);
         await _context.SaveChangesAsync();
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Poliedro.Billing.Domain.Concepto.Entities;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Poliedro.Billing.Domain.Ciudad.Entities;
 using Poliedro.Billing.Domain.TipoVehiculo.Entities;
 using Poliedro.Billing.Domain.ControlViajeProducto.Entities;
@@ -53,20 +52,3 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
     }
     }
 
-internal class TipoVehiculoConfiguration
-{
-    private EntityTypeBuilder<TipoVehiculoEntity> entityTypeBuilder;
-internal class VehiculoConfiguration
-{
-    private EntityTypeBuilder<TipoVehiculoEntity> entityTypeBuilder;
-
-    public VehiculoConfiguration(EntityTypeBuilder<TipoVehiculoEntity> entityTypeBuilder)
-    {
-        this.entityTypeBuilder = entityTypeBuilder;
-    }
-}
-    public TipoVehiculoConfiguration(EntityTypeBuilder<TipoVehiculoEntity> entityTypeBuilder)
-    {
-        this.entityTypeBuilder = entityTypeBuilder;
-    }
-}
