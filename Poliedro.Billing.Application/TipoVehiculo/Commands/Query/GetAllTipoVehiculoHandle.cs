@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using Poliedro.Billing.Application.TipoVehiculo.Commands.Dto;
-using Poliedro.Billing.Domain.TipoVehiculo.Entities.Ports;
+using Poliedro.Billing.Application.TipoVehiculo.Dto;
+using Poliedro.Billing.Domain.TipoVehiculo.Ports;
 
 namespace Poliedro.Billing.Application.TipoVehiculo.Commands.Query;
 
@@ -11,8 +11,8 @@ public class GetAllTipoVehiculoQueryHandle(ITipoVehiculoRepository _tipovehiculo
         var entities = await _tipovehiculoRepository.GetAllAsync();
         return entities.Select(tipovehiculo => new TipoVehiculoDto
         (
-            Id: tipovehiculo.Id,
-            Descripcion: tipovehiculo.Descripcion
+            id: tipovehiculo.Id,
+            descripcion: tipovehiculo.descripcion
         ));
     }
 }

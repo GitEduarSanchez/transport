@@ -8,5 +8,6 @@ public interface ITipoVehiculoRepository
     Task<bool> SaveAsync(TipoVehiculoEntity tipovehiculo);
     Task<IEnumerable<TipoVehiculoEntity>> GetAllAsync();
     Task<TipoVehiculoEntity> GetById(int Id);
-    
+     Task<bool> DeleteAsync(int Id);
+    Task UpdateAsync(int Id, TipoVehiculoEntity tipovehiculo);
 }

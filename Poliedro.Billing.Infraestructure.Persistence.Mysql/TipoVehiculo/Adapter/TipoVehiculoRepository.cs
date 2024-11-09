@@ -1,12 +1,13 @@
 ﻿using Poliedro.Billing.Domain.TipoVehiculo.Entities;
 using Poliedro.Billing.Domain.TipoVehiculo.Ports;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Context;
-using Microsoft.EntityFrameworkCore;
 
 namespace Poliedro.Billing.Infraestructure.Persistence.Mysql.TipoVehiculo.Adapter;
 
 public class TipoVehiculoRepository(DataBaseContext _context) : ITipoVehiculoRepository
 {
+    public async Task<bool> DeleteAsync(int Id)
+    {
         var entity = await _context.TipoVehiculo.FindAsync(Id);
         if (entity == null)
         {
@@ -35,7 +36,7 @@ public class TipoVehiculoRepository(DataBaseContext _context) : ITipoVehiculoRep
     public async Task UpdateAsync(int Id, TipoVehiculoEntity tipovehiculo)
     {
         var entity = await _context.TipoVehiculo.FindAsync(Id) ?? throw new KeyNotFoundException($"Entity with Id {Id} not found.");
-        entity.descripcion = tipovehiculo.descripcion;
+        entity.Descripcion = tipovehiculo.Descripcion;
         _context.TipoVehiculo.Update(entity);
         await _context.SaveChangesAsync();
     }

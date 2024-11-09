@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Poliedro.Billing.Application.TipoVehiculo.Commands.Dto;
+using Poliedro.Billing.Application.TipoVehiculo.Dto;
 
 namespace Poliedro.Billing.Application.TipoVehiculo.Commands.Query;
 

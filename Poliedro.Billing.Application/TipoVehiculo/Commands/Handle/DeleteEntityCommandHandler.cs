@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Poliedro.Billing.Domain.TipoVehiculo.Entities.Ports;
 using Poliedro.Billing.Domain.TipoVehiculo.Ports;
 
 namespace Poliedro.Billing.Application.TipoVehiculo.Commands.Handle;
