@@ -12,8 +12,8 @@ public class  GetAllActuatorHandle(IDestinoRepository _DestinoRepository) : IReq
        var Entities = await _DestinoRepository.GetAllAsync();
         return Entities.Select(Destino => new DestinoDto
         (
-          Id:Destino.iddestino,
-          Descripcion: Destino.descripcion
+          Id:Destino.Iddestino,
+          Descripcion: Destino.Descripcion
         ));
     }
 }

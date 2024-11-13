@@ -16,7 +16,7 @@ namespace Poliedro.Billing.Api.Controllers.v1.Estado.Controllers
         [HttpGet]
         public async Task<IEnumerable<EstadoDto>> GetAll()
         {
-            return await mediator.Send(new GetAllEstadoQuery());
+            return await mediator.Send(new GetAllActuatorsQuery());
         }
 
         [HttpGet("{id}")]
@@ -69,6 +69,4 @@ namespace Poliedro.Billing.Api.Controllers.v1.Estado.Controllers
             }
         }
     }
-
-
 }

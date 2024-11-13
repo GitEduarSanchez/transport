@@ -5,6 +5,6 @@ namespace Poliedro.Billing.Domain.Destino.Entities;
 public class DestinoEntity
 {
     [Key]
-    public int iddestino { get; set; }
-    public string descripcion { get; set; }
+    public int Iddestino { get; set; }
+    public string Descripcion { get; set; }
 }

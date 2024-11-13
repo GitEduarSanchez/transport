@@ -9,6 +9,6 @@ public class GetByIdDestinoHandle(IDestinoRepository DestinoRepository) : IReque
     public async Task<DestinoDto> Handle(GetByIdDestinoQuery request, CancellationToken cancellationToken)
     {
         var getByIdDestino = await DestinoRepository.GetById(request.Id);
-        return new DestinoDto(Id: getByIdDestino.iddestino,Descripcion: getByIdDestino.descripcion);
+        return new DestinoDto(Id: getByIdDestino.Iddestino,Descripcion: getByIdDestino.Descripcion);
     }
 }

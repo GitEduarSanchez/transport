@@ -2,12 +2,12 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
-using Poliedro.Billing.Application.Destino.Commands.CreateServerCommand;
+using Poliedro.Billing.Application.Destino.Commands;
 using Poliedro.Billing.Application.Destino.Dto;
 using Poliedro.Billing.Application.Destino.Query;
-using System.ComponentModel.DataAnnotations;
 
-namespace Poliedro.Billing.Api.Controllers.v1.Server
+
+namespace Poliedro.Billing.Api.Controllers.v1.Destino.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -15,7 +15,7 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
     public class DestinoController(IMediator mediator) : ControllerBase
     {
         [HttpGet]
-        public async Task<IEnumerable<DestinoDto>> GetAll()
+        public async Task<IEnumerable<DestinoDtoDto>> GetAll()
         {
             return await mediator.Send(new GetAllActuatorsQuery());
         }
@@ -37,14 +37,23 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
         }
        
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] CreateDestinoCommand command)
+        public async Task<ActionResult<bool>> UpdateDestino(int id, [FromBody] UpdateDestinoCommand command)
         {
+            if (id != command.Id)
+            {
+                return BadRequest();
+            }
+
+            await mediator.Send(command);
+            return NoContent();
         }
 
-        
+
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult<bool>> Delete(int id)
         {
+            var result = await mediator.Send(new DeleteDestinoCommand(id));
+            return Ok (result);
         }
 
         private IActionResult HandleValidationErrors(List<ValidationFailure> errors)
@@ -62,4 +71,7 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
         }
     }
 
+    public class DestinoDtoDto
+    {
+    }
 }
