@@ -4,6 +4,7 @@ using Poliedro.Billing.Domain.Ciudad.Entities;
 using Poliedro.Billing.Domain.ControlViajeProducto.Entities;
 using Poliedro.Billing.Domain.Conductor.Entities;
 using Poliedro.Billing.Domain.Producto.Entities;
+using Poliedro.Billing.Domain.unidad_medida.Entities;
 using Poliedro.Billing.Domain.ControlViaje.Entities;
 using Poliedro.Billing.Domain.Estado.Entities;
 using Poliedro.Billing.Domain.Descargue.Entities;
@@ -16,6 +17,7 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
 {
     public DbSet<ConductorEntity> Conductor { get; set; }
     public DbSet<ProductoEntity> Producto { get; set; } 
+    public DbSet<unidad_medidaEntity> unidad_medida { get; set; }
     public DbSet<ConceptoEntity> Concepto { get; set; }
     public DbSet<ControlViajeEntity> ControlViaje { get; set; }
     public DbSet<EstadoEntity> Estado { get; set; }
@@ -36,6 +38,7 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
     {
         new ConductorConfiguration(modelBuilder.Entity<ConductorEntity>());
         new ProductoConfiguration(modelBuilder.Entity<ProductoEntity>());
+        new unidad_medidaConfiguration(modelBuilder.Entity<unidad_medidaEntity>());
         new ConceptoConfiguration(modelBuilder.Entity<ConceptoEntity>());
         new ControlViajeConfiguration(modelBuilder.Entity<ControlViajeEntity>());
         new CiudadConfiguration(modelBuilder.Entity<CiudadEntity>());
