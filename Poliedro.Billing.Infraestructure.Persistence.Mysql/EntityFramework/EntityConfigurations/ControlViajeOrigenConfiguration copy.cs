@@ -1,15 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-using Poliedro.Billing.Domain.Estado.Entities;
+using Poliedro.Billing.Domain.ControlViajeOrigen.Entities;
 
 namespace Poliedro.Billing.Infraestructure.Persistence.Mysql.EntityFramework.EntityConfigurations;
 
-public class EstadoConfiguration
+public class ControlViajeOrigenConfiguration
 {
-    public EstadoConfiguration(EntityTypeBuilder<EstadoEntity> builder)
+    public ControlViajeOrigenConfiguration(EntityTypeBuilder<ControlViajeOrigenEntity> builder)
     {
-        builder.ToTable("estado");
+        builder.ToTable("controlviajeorigen");
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).HasColumnName("idControlViajeOrigen");
         builder.Property(x => x.idcontrolviaje).HasColumnName("idcontrolviaje");

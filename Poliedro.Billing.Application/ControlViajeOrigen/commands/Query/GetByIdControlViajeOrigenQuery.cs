@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using Poliedro.Billing.Application.Estado.Commands.Dto;
+using Poliedro.Billing.Application.ControlViajeOrigen.Commands.Dto;
 
-namespace Poliedro.Billing.Application.Estado.Commands.Query;
+namespace Poliedro.Billing.Application.ControlViajeOrigen.Commands.Query;
 
-public record GetByIdEstadoQuery(int Id) : IRequest<EstadoDto>;
+public record GetByIdControlViajeOrigenQuery(int Id) : IRequest<ControlViajeOrigenDto>;
 
