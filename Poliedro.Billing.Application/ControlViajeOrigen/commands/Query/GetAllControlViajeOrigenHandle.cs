@@ -12,7 +12,9 @@ public class GetAllEstadoQueryHandle(IControlViajeOrigenRepository _controlviaje
         return entities.Select(controlviajeorigen => new ControlViajeOrigenDto
         (
             Id: controlviajeorigen.Id,
-            Descripcion: controlviajeorigen.Descripcion
+            idcontrolviaje: controlviajeorigen.idcontrolviaje,
+            idorigen: controlviajeorigen.idorigen,
+            idciudad: controlviajeorigen.idciudad
         ));
     }
 }
