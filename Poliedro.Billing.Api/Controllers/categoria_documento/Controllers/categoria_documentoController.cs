@@ -22,8 +22,8 @@ namespace Poliedro.Billing.Api.Controllers.v1.categoria_documento
         [HttpGet("{id}")]
         public async Task<categoria_documentoDto> GetAsync([FromRoute] int id)
         {
-            var getcategoria_documentoByIdQuery = new GetByIdcategoria_documentoQuery(id);
-            return await mediator.Send(getcategoria_documentoByIdQuery);
+            var getCiudadByIdQuery = new GetByIdcategoria_documentoQuery(id);
+            return await mediator.Send(getCiudadByIdQuery);
         }
 
 
@@ -45,7 +45,6 @@ namespace Poliedro.Billing.Api.Controllers.v1.categoria_documento
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            
         }
 
         private IActionResult HandleValidationErrors(List<ValidationFailure> errors)

@@ -12,7 +12,7 @@ public class GetAllActuatorHandle(Icategoria_documentoRepository _categoria_docu
         return entities.Select(categoria_documento => new categoria_documentoDto
         (
             Id: categoria_documento.Id,
-            Descripcion: categoria_documento.Descripcion
+            descripcion: categoria_documento.descripcion
            
         ));
     }

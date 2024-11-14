@@ -12,7 +12,7 @@ public class categoria_documentoConfiguration
         builder.ToTable("categoria_documento");
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).HasColumnName("idcategoria_documento");
-        builder.Property(x => x.Descripcion).HasColumnName("descripcion");
+        builder.Property(x => x.descripcion).HasColumnName("descripcion");
     
     }
 }
