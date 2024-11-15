@@ -2,41 +2,41 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
-using Poliedro.Billing.Application.ControlViajeOrigen.Commands;
-using Poliedro.Billing.Application.ControlViajeOrigen.Commands.Dto;
-using Poliedro.Billing.Application.ControlViajeOrigen.Commands.Query;
+using Poliedro.Billing.Application.controlviaje_origen.Commands;
+using Poliedro.Billing.Application.controlviaje_origen.Commands.Dto;
+using Poliedro.Billing.Application.controlviaje_origen.Commands.Query;
 
-namespace Poliedro.Billing.Api.Controllers.v1.ControlViaje.Controllers
+namespace Poliedro.Billing.Api.Controllers.v1.controlviaje_origen.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [TypeFilter(typeof(ExceptionManager))]
-    public class ControlViajeOrigenController(IMediator mediator) : ControllerBase
+    public class controlviaje_origenController(IMediator mediator) : ControllerBase
     {
         [HttpGet]
-        public async Task<IEnumerable<ControlViajeOrigenDto>> GetAll()
+        public async Task<IEnumerable<controlviaje_origenDto>> GetAll()
         {
-            return await mediator.Send(new GetAllControlViajeOrigenQuery());
+            return await mediator.Send(new GetAllcontrolviaje_origenQuery());
         }
 
         [HttpGet("{id}")]
-        public async Task<ControlViajeOrigenDto> GetAsync([FromRoute] int id)
+        public async Task<controlviaje_origenDto> GetAsync([FromRoute] int id)
         {
-            var getControlViajeOrigenByIdQuery = new GetByIdControlViajeOrigenQuery(id);
-            return await mediator.Send(getControlViajeOrigenByIdQuery);
+            var getcontrolviaje_origenByIdQuery = new GetByIdcontrolviaje_origenQuery(id);
+            return await mediator.Send(getcontrolviaje_origenByIdQuery);
         }
 
 
         [HttpPost]
 
-        public async Task<ActionResult<bool>> Create([FromBody] CreateControlViajeOrigenCommand command)
+        public async Task<ActionResult<bool>> Create([FromBody] Createcontrolviaje_origenCommand command)
         {
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateControlViaje(int id, [FromBody] UpdateControlViajeOrigenCommand command)
+        public async Task<IActionResult> UpdateControlViaje(int id, [FromBody] Updatecontrolviaje_origenCommand command)
         {
             if (id != command.Id)
             {
@@ -51,7 +51,7 @@ namespace Poliedro.Billing.Api.Controllers.v1.ControlViaje.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<bool>> Delete(int id)
         {
-            var result = await mediator.Send(new DeleteControlViajeOrigenCommand(id));
+            var result = await mediator.Send(new Deletecontrolviaje_origenCommand(id));
             return Ok(result);
         }
 

@@ -7,6 +7,7 @@ using Poliedro.Billing.Domain.Conductor.Ports;
 using Poliedro.Billing.Domain.ControlViaje.Ports;
 using Poliedro.Billing.Domain.ControlViajeProducto.Ports;
 using Poliedro.Billing.Domain.Descargue.Ports;
+using Poliedro.Billing.Domain.controlviaje_origen.Entities.Ports;
 using Poliedro.Billing.Domain.Ports;
 using Poliedro.Billing.Domain.Producto.Ports;
 using Poliedro.Billing.Domain.Origen.Ports;
@@ -14,7 +15,7 @@ using Poliedro.Billing.Infraestructure.Persistence.Mysql.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Concepto.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Conductor.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.ControlViajeProducto.Adapter;
-using Poliedro.Billing.Infraestructure.Persistence.Mysql.ControlViajeOrigen.Adapter;
+using Poliedro.Billing.Infraestructure.Persistence.Mysql.controlviaje_origen.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Context;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Producto.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Estado.Adapter;
@@ -22,7 +23,7 @@ using Poliedro.Billing.Infraestructure.Persistence.Mysql.Descargue.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Origen.Adapter;
 using Poliedro.Billing.Domain.Estado.Entities.Ports;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Ciudad;
-using Poliedro.Billing.Domain.ControlViajeOrigen.Entities.Ports;
+
 
 
 namespace Poliedro.Billing.Infraestructure.Persistence.Mysql;
@@ -46,7 +47,7 @@ public static class DependencyInjectionService
         services.AddTransient<IView_CiudadRepository, View_CiudadRepository>();
         services.AddTransient<IControlViajeProductoRepository, ControlViajeProductoRepository>();
         services.AddTransient<IDescargueRepository, DescargueRepository>();
-        services.AddTransient<IControlViajeOrigenRepository, ControlViajeOrigenRepository>();
+        services.AddTransient<Icontrolviaje_origenRepository, controlviaje_origenRepository>();
         services.AddTransient<IOrigenRepository, OrigenRepository>();
         return services;
     }

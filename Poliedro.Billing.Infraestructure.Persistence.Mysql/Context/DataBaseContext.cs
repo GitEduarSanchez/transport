@@ -6,7 +6,7 @@ using Poliedro.Billing.Domain.Conductor.Entities;
 using Poliedro.Billing.Domain.Producto.Entities;
 using Poliedro.Billing.Domain.ControlViaje.Entities;
 using Poliedro.Billing.Domain.Estado.Entities;
-using Poliedro.Billing.Domain.ControlViajeOrigen.Entities;
+using Poliedro.Billing.Domain.controlviaje_origen.Entities;
 using Poliedro.Billing.Domain.Descargue.Entities;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.EntityFramework.EntityConfigurations;
 using Poliedro.Billing.Domain.Origen.Entities;
@@ -24,7 +24,7 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
     public DbSet<DescargueEntity> Descargue { get; set; }
     public DbSet<View_CiudadEntity> View_Ciudad { get; set; }
     public DbSet<ControlViajeProductoEntity> ControlViajeProducto { get; set; }
-     public DbSet<ControlViajeOrigenEntity> ControlViajeOrigen { get; set; }
+     public DbSet<controlviaje_origenEntity> controlviaje_origen { get; set; }
     
     public DbSet<OrigenEntity> Origen { get; set; }
 
@@ -46,7 +46,7 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
         new DescargueConfiguration(modelBuilder.Entity<DescargueEntity>());
         new EstadoConfiguration(modelBuilder.Entity<EstadoEntity>());
         new OrigenConfiguration(modelBuilder.Entity<OrigenEntity>());
-        new ControlViajeOrigenConfiguration(modelBuilder.Entity<ControlViajeOrigenEntity>());
+        new controlviaje_origenConfiguration(modelBuilder.Entity<controlviaje_origenEntity>());
     }
     }
 

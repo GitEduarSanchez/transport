@@ -1,17 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-using Poliedro.Billing.Domain.ControlViajeOrigen.Entities;
+using Poliedro.Billing.Domain.controlviaje_origen.Entities;
 
 namespace Poliedro.Billing.Infraestructure.Persistence.Mysql.EntityFramework.EntityConfigurations;
 
-public class ControlViajeOrigenConfiguration
+public class controlviaje_origenConfiguration
 {
-    public ControlViajeOrigenConfiguration(EntityTypeBuilder<ControlViajeOrigenEntity> builder)
+    public controlviaje_origenConfiguration(EntityTypeBuilder<controlviaje_origenEntity> builder)
     {
-        builder.ToTable("controlviajeorigen");
-        builder.HasKey(x => x.Id);
-        builder.Property(x => x.Id).HasColumnName("idControlViajeOrigen");
+        builder.ToTable("controlviaje_origen");
+        builder.HasKey(x => x.idcontrolviaje_origen);
+        builder.Property(x => x.idcontrolviaje_origen).HasColumnName("idcontrolviaje_origen");
         builder.Property(x => x.idcontrolviaje).HasColumnName("idcontrolviaje");
         builder.Property(x => x.idorigen).HasColumnName("idorigen");
         builder.Property(x => x.idciudad).HasColumnName("idciudad");
