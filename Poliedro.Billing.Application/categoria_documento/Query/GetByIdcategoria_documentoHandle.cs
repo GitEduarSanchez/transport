@@ -9,6 +9,6 @@ public class GetByIdcategoria_documentoHandle(Icategoria_documentoRepository cat
     public async Task<categoria_documentoDto> Handle(GetByIdcategoria_documentoQuery request, CancellationToken cancellationToken)
     {
         var getByIdcategoria_documento = await categoria_documentoRepository.GetById(request.Id);
-        return new categoria_documentoDto(Id: getByIdcategoria_documento.Id, Descripcion: getByIdcategoria_documento.Descripcion);
+        return new categoria_documentoDto(Id: getByIdcategoria_documento.Id, descripcion: getByIdcategoria_documento.descripcion);
     }
 }

@@ -10,7 +10,7 @@ public class categoria_documentoHandle(Icategoria_documentoRepository _categoria
 {
     public async Task<bool> Handle(Createcategoria_documentoCommand request, CancellationToken cancellationToken)
     {
-        categoria_documentoEntity categoria_documento = new() { Descripcion = request.descripcion};
+        categoria_documentoEntity categoria_documento = new() { descripcion = request.descripcion};
         return await _categoria_documentoRepository.SaveAsync(categoria_documento); 
     }
     
