@@ -2,11 +2,11 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
-using Poliedro.Billing.Application.Producto.commands;
-using Poliedro.Billing.Application.Producto.Dto;
-using Poliedro.Billing.Application.Producto.Query;
+using Poliedro.Billing.Application.Producto.Commands;
+using Poliedro.Billing.Application.Producto.Commands.Dto;
+using Poliedro.Billing.Application.Producto.Commands.Query;
 
-namespace Poliedro.Billing.Api.Controllers.v1.Producto.controllers
+namespace Poliedro.Billing.Api.Controllers.v1.Producto.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -16,7 +16,7 @@ namespace Poliedro.Billing.Api.Controllers.v1.Producto.controllers
         [HttpGet]
         public async Task<IEnumerable<ProductoDto>> GetAll()
         {
-            return await mediator.Send(new GetAllActuatorsQuery());
+            return await mediator.Send(new GetAllProductoQuery());
         }
 
         [HttpGet("{id}")]
@@ -25,7 +25,6 @@ namespace Poliedro.Billing.Api.Controllers.v1.Producto.controllers
             var getProductoByIdQuery = new GetByIdProductoQuery(id);
             return await mediator.Send(getProductoByIdQuery);
         }
-
 
 
         [HttpPost]
@@ -37,14 +36,23 @@ namespace Poliedro.Billing.Api.Controllers.v1.Producto.controllers
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] CreateProductoCommand command)
+        public async Task<IActionResult> UpdateProducto(int id, [FromBody] UpdateProductoCommand command)
         {
+            if (id != command.Id)
+            {
+                return BadRequest();
+            }
+
+            await mediator.Send(command);
+            return NoContent();
         }
 
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult<bool>> Delete(int id)
         {
+            var result = await mediator.Send(new DeleteProductoCommand(id));
+            return Ok(result);
         }
 
         private IActionResult HandleValidationErrors(List<ValidationFailure> errors)
@@ -60,9 +68,7 @@ namespace Poliedro.Billing.Api.Controllers.v1.Producto.controllers
                 Console.WriteLine($"log: {failure.ErrorMessage}");
             }
         }
-
-
-
-
     }
+
+
 }
