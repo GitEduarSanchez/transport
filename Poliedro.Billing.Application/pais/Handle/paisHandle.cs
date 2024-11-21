@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using Poliedro.Billing.Domain.pais.Ports;
 using Poliedro.Billing.Domain.pais.Entities;
 using Poliedro.Billing.Application.pais.Commands;
+using Poliedro.Billing.Domain.pais.Entities.Ports;
 
 
 namespace Poliedro.Billing.Application.pais.Handle;

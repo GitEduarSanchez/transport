@@ -2,11 +2,11 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
+using Poliedro.Billing.Application.pais.Commands;
 using Poliedro.Billing.Application.pais.Dto;
 using Poliedro.Billing.Application.pais.Query;
-using Poliedro.Billing.Application.pais.Commands;
 
-namespace Poliedro.Billing.Api.Controllers.v1.pais
+namespace Poliedro.Billing.Api.Controllers.v1.pais.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -27,7 +27,6 @@ namespace Poliedro.Billing.Api.Controllers.v1.pais
         }
 
 
-
         [HttpPost]
 
         public async Task<ActionResult<bool>> Create([FromBody] CreatepaisCommand command)
@@ -37,14 +36,23 @@ namespace Poliedro.Billing.Api.Controllers.v1.pais
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] CreatepaisCommand command)
+        public async Task<IActionResult> Updatepais(int id, [FromBody] UpdatepaisCommand command)
         {
+            if (id != command.Id)
+            {
+                return BadRequest();
+            }
+
+            await mediator.Send(command);
+            return NoContent();
         }
 
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult<bool>> Delete(int id)
         {
+            var result = await mediator.Send(new DeletepaisCommand(id));
+            return Ok(result);
         }
 
         private IActionResult HandleValidationErrors(List<ValidationFailure> errors)

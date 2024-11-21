@@ -3,7 +3,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Poliedro.Billing.Domain.Concepto.Ports;
 using Poliedro.Billing.Domain.Ciudad.Ports;
-using Poliedro.Billing.Domain.pais.Ports;
 using Poliedro.Billing.Domain.Conductor.Ports;
 using Poliedro.Billing.Domain.ControlViaje.Ports;
 using Poliedro.Billing.Domain.ControlViajeProducto.Ports;
@@ -22,7 +21,8 @@ using Poliedro.Billing.Infraestructure.Persistence.Mysql.Descargue.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Origen.Adapter;
 using Poliedro.Billing.Domain.Estado.Entities.Ports;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Ciudad;
-using Poliedro.Billing.Infraestructure.Persistence.Mysql.pais;
+using Poliedro.Billing.Infraestructure.Persistence.Mysql.pais.Adapter;
+using Poliedro.Billing.Domain.pais.Entities.Ports;
 
 
 
