@@ -15,7 +15,7 @@ namespace Poliedro.Billing.Api.Controllers.v1.Destino.Controllers
     public class DestinoController(IMediator mediator) : ControllerBase
     {
         [HttpGet]
-        public async Task<IEnumerable<DestinoDtoDto>> GetAll()
+        public async Task<IEnumerable<DestinoDto>> GetAll()
         {
             return await mediator.Send(new GetAllActuatorsQuery());
         }
@@ -69,9 +69,5 @@ namespace Poliedro.Billing.Api.Controllers.v1.Destino.Controllers
                 Console.WriteLine($"log: {failure.ErrorMessage}");
             }
         }
-    }
-
-    public class DestinoDtoDto
-    {
     }
 }
