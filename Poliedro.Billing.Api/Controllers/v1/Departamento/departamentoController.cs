@@ -2,11 +2,12 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
-using Poliedro.Billing.Application.departamento.Dto;
-using Poliedro.Billing.Application.departamento.Query;
 using Poliedro.Billing.Application.departamento.Commands;
 
-namespace Poliedro.Billing.Api.Controllers.v1.departamento
+using Poliedro.Billing.Application.departamento.Dto;
+using Poliedro.Billing.Application.departamento.Query;
+
+namespace Poliedro.Billing.Api.Controllers.v1.departamento.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -27,7 +28,6 @@ namespace Poliedro.Billing.Api.Controllers.v1.departamento
         }
 
 
-
         [HttpPost]
 
         public async Task<ActionResult<bool>> Create([FromBody] CreatedepartamentoCommand command)
@@ -37,14 +37,23 @@ namespace Poliedro.Billing.Api.Controllers.v1.departamento
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] CreatedepartamentoCommand command)
+        public async Task<IActionResult> Updatedepartamento(int id, [FromBody] UpdatedepartamentoCommand command)
         {
+            if (id != command.Id)
+            {
+                return BadRequest();
+            }
+
+            await mediator.Send(command);
+            return NoContent();
         }
 
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult<bool>> Delete(int id)
         {
+            var result = await mediator.Send(new DeletedepartamentoCommand(id));
+            return Ok(result);
         }
 
         private IActionResult HandleValidationErrors(List<ValidationFailure> errors)
