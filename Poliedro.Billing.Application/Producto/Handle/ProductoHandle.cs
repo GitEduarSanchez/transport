@@ -1,7 +1,8 @@
 ﻿using MediatR;
 using Poliedro.Billing.Application.Producto.commands;
 using Poliedro.Billing.Domain.Producto.Entities;
-using Poliedro.Billing.Domain.Producto.Ports;
+using Poliedro.Billing.Domain.Producto.Entities.Ports;
+
 
 namespace Poliedro.Billing.Application.Producto.Handle;
 

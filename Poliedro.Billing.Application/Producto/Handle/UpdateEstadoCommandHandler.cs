@@ -9,8 +9,8 @@ public class UpdateProductoCommandHandler(IProductoRepository _ProductoRepositor
     public async Task<Unit> Handle(UpdateProductoCommand request, CancellationToken cancellationToken)
     {
         var Producto = await _ProductoRepository.GetById(request.Id) ?? throw new Exception("No Found.");
-        Producto.Descripcion = request.ProductoEntity.Descripcion;
-        await _ProductoRepository.UpdateAsync(request.Id, new ProductoEntity() { Descripcion = Producto.Descripcion});
+        Producto.descripcion = request.ProductoEntity.Descripcion;
+        await _ProductoRepository.UpdateAsync(request.Id, new ProductoEntity() { descripcion = Producto.descripcion});
         return Unit.Value;
     }
 }
