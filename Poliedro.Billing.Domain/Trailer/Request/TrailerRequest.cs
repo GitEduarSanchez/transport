@@ -1,3 +1,3 @@
-﻿namespace Poliedro.Billing.Domain.Estado.Request;
+﻿namespace Poliedro.Billing.Domain.Trailer.Request;
 
-public record EstadoRequest(string Descripcion);
+public record TrailerRequest(string idtrailer,string descripcion,string serial);

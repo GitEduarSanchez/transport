@@ -1,18 +1,18 @@
 ﻿using MediatR;
-using Poliedro.Billing.Application.Estado.Commands.Dto;
-using Poliedro.Billing.Domain.Estado.Entities.Ports;
+using Poliedro.Billing.Application.Trailer.Dto;
+using Poliedro.Billing.Domain.Trailer.Ports;
 
-namespace Poliedro.Billing.Application.Estado.Commands.Query;
+namespace Poliedro.Billing.Application.Trailer.Commands.Query;
 
-public class GetAllEstadoQueryHandle(IEstadoRepository _estadoRepository) : IRequestHandler<GetAllEstadoQuery, IEnumerable<EstadoDto>>
+public class GetAllTrailerQueryHandle(ITrailerRepository _trailerRepository) : IRequestHandler<GetAllTrailerQuery, IEnumerable<TrailerDto>>
 {
-    public async Task<IEnumerable<EstadoDto>> Handle(GetAllEstadoQuery request, CancellationToken cancellationToken)
+    public async Task<IEnumerable<TrailerDto>> Handle(GetAllTrailerQuery request, CancellationToken cancellationToken)
     {
-        var entities = await _estadoRepository.GetAllAsync();
-        return entities.Select(estado => new EstadoDto
+        var entities = await _trailerRepository.GetAllAsync();
+        return entities.Select(trailer => new TrailerDto
         (
-            Id: estado.Id,
-            Descripcion: estado.Descripcion
+            id: trailer.Id,
+            Descripcion: trailer.descripcion
         ));
     }
 }

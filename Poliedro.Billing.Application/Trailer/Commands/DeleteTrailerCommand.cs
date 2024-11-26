@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Poliedro.Billing.Application.Estado.Commands;
+namespace Poliedro.Billing.Application.Trailer.Commands;
 
-public record DeleteEstadoCommand(int Id) : IRequest<bool>;
+public record DeleteTrailerCommand(int Id) : IRequest<bool>;
 

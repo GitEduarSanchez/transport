@@ -2,41 +2,42 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
-using Poliedro.Billing.Application.Estado.Commands;
-using Poliedro.Billing.Application.Estado.Commands.Dto;
-using Poliedro.Billing.Application.Estado.Commands.Query;
+using Poliedro.Billing.Application.Trailer.Commands;
+using Poliedro.Billing.Application.Trailer.Commands.CreateServerCommand;
+using Poliedro.Billing.Application.Trailer.Commands.Query;
+using Poliedro.Billing.Application.Trailer.Dto;
 
-namespace Poliedro.Billing.Api.Controllers.v1.Estado.Controllers
+namespace Poliedro.Billing.Api.Controllers.v1.Trailer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [TypeFilter(typeof(ExceptionManager))]
-    public class EstadoController(IMediator mediator) : ControllerBase
+    public class TrailerController(IMediator mediator) : ControllerBase
     {
         [HttpGet]
-        public async Task<IEnumerable<EstadoDto>> GetAll()
+        public async Task<IEnumerable<TrailerDto>> GetAll()
         {
-            return await mediator.Send(new GetAllEstadoQuery());
+            return await mediator.Send(new GetAllTrailerQuery());
         }
 
         [HttpGet("{id}")]
-        public async Task<EstadoDto> GetAsync([FromRoute] int id)
+        public async Task<TrailerDto> GetAsync([FromRoute] int id)
         {
-            var getEstadoByIdQuery = new GetByIdEstadoQuery(id);
-            return await mediator.Send(getEstadoByIdQuery);
+            var getTrailerByIdQuery = new GetByIdTrailerQuery(id);
+            return await mediator.Send(getTrailerByIdQuery);
         }
 
 
         [HttpPost]
 
-        public async Task<ActionResult<bool>> Create([FromBody] CreateEstadoCommand command)
+        public async Task<ActionResult<bool>> Create([FromBody] CreateTrailerCommand command)
         {
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateEstado(int id, [FromBody] UpdateEstadoCommand command)
+        public async Task<IActionResult> UpdateTrailer(int id, [FromBody] UpdateTrailerCommand command)
         {
             if (id != command.Id)
             {
@@ -51,7 +52,7 @@ namespace Poliedro.Billing.Api.Controllers.v1.Estado.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<bool>> Delete(int id)
         {
-            var result = await mediator.Send(new DeleteEstadoCommand(id));
+            var result = await mediator.Send(new DeleteTrailerCommand(id));
             return Ok(result);
         }
 

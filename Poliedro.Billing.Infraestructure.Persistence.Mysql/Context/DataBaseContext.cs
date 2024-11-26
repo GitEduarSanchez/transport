@@ -10,6 +10,7 @@ using Poliedro.Billing.Domain.Estado.Entities;
 using Poliedro.Billing.Domain.Descargue.Entities;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.EntityFramework.EntityConfigurations;
 using Poliedro.Billing.Domain.Origen.Entities;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Poliedro.Billing.Infraestructure.Persistence.Mysql.Context;
 

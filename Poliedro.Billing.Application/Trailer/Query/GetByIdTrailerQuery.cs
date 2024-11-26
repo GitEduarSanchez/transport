@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using Poliedro.Billing.Application.Estado.Commands.Dto;
+using Poliedro.Billing.Application.Trailer.Dto;
 
-namespace Poliedro.Billing.Application.Estado.Commands.Query;
+namespace Poliedro.Billing.Application.Trailer.Commands.Query;
 
-public record GetByIdEstadoQuery(int Id) : IRequest<EstadoDto>;
+public record GetByIdTrailerQuery(int Id) : IRequest<TrailerDto>;
 

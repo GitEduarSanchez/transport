@@ -1,12 +1,12 @@
 ﻿using MediatR;
-using Poliedro.Billing.Domain.Estado.Entities.Ports;
+using Poliedro.Billing.Domain.Trailer.Ports;
 
-namespace Poliedro.Billing.Application.Estado.Commands.Handle;
+namespace Poliedro.Billing.Application.Trailer.Commands.Handle;
 
-public class DeleteEntityCommandHandler(IEstadoRepository estadoRepository) : IRequestHandler<DeleteEstadoCommand, bool>
+public class DeleteEntityCommandHandler(ITrailerRepository TrailerRepository) : IRequestHandler<DeleteTrailerCommand, bool>
 {
-    public async Task<bool> Handle(DeleteEstadoCommand request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(DeleteTrailerCommand request, CancellationToken cancellationToken)
     {
-        return await estadoRepository.DeleteAsync(request.Id);
+        return await TrailerRepository.DeleteAsync(request.Id);
     }
 }
