@@ -20,7 +20,7 @@ public class DestinoRepository(DataBaseContext _context) : IDestinoRepository
     
     public async Task<IEnumerable<DestinoEntity>> GetAllAsync()
     {
-        return await _Context.Destino.ToListAsync();
+        return await _context.Destino.ToListAsync();
     }
 
     public async Task<DestinoEntity> GetById(int Id)
