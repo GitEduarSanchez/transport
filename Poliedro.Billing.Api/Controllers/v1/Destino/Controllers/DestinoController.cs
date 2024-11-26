@@ -6,7 +6,6 @@ using Poliedro.Billing.Application.Destino.Commands;
 using Poliedro.Billing.Application.Destino.Dto;
 using Poliedro.Billing.Application.Destino.Query;
 
-
 namespace Poliedro.Billing.Api.Controllers.v1.Destino.Controllers
 {
     [Route("api/[controller]")]
