@@ -1,8 +1,10 @@
-﻿using FluentValidation.Results;
+﻿using FluentValidation;
+using FluentValidation.Results;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
 using Poliedro.Billing.Application.Descargue.Commands;
+using Poliedro.Billing.Application.Descargue.Commands.Validator;
 using Poliedro.Billing.Application.Descargue.Dto;
 using Poliedro.Billing.Application.Descargue.Query;
 using System.ComponentModel.DataAnnotations;
@@ -14,8 +16,6 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
     [TypeFilter(typeof(ExceptionManager))]
     public class DescargueController(IMediator mediator) : ControllerBase
     {
-
-
         [HttpGet]
         public async Task<IEnumerable<DescargueDto>> GetAll()
         {
@@ -36,6 +36,11 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
                 
         public async Task<ActionResult<bool>> Create([FromBody] CreateDescargueCommand command)
         {
+        var validationResult = await new CreateDescargueCommandValidator().ValidateAsync(command);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors.Select(e => e.ErrorMessage));
+            }            
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
