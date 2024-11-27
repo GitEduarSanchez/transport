@@ -8,7 +8,7 @@ public class GetByIdVehiculoTrailerDestinoHandle(IVehiculoTrailerDestinoReposito
 {
     public async Task<VehiculoTrailerDestinoDto> Handle(GetByIdVehiculoTrailerDestinoQuery request, CancellationToken cancellationToken)
     {
-        var getByIdVehiculoTrailerDestino = await VehiculoTrailerDestinoRepository.GetById(request.Id);
-        return new VehiculoTrailerDestinoDto(Id: getByIdVehiculoTrailerDestino.Id, dvehiculotrailer: getByIdVehiculoTrailerDestino.dvehiculotrailer, iddestino: getByIdVehiculoTrailerDestino.iddestino, idcuidad: getByIdVehiculoTrailerDestino.idcuidad);
+        var getByIdVehiculoTrailerDestino = await VehiculoTrailerDestinoRepository.GetById(request.VehiculoTrailerDestino);
+        return new VehiculoTrailerDestinoDto(VehiculoTrailerDestino: getByIdVehiculoTrailerDestino.VehiculoTrailerDestino, dvehiculotrailer: getByIdVehiculoTrailerDestino.dvehiculotrailer, iddestino: getByIdVehiculoTrailerDestino.iddestino, idcuidad: getByIdVehiculoTrailerDestino.idcuidad);
     }
 }

@@ -8,10 +8,11 @@ public class VehiculoTrailerDestinoConfiguration
 {
     public VehiculoTrailerDestinoConfiguration(EntityTypeBuilder<VehiculoTrailerDestinoEntity> builder)
     {
-        builder.ToTable("vehiculotrailerdestino");
-        builder.HasKey(x => x.Id);
-        builder.Property(x => x.dvehiculotrailer).HasColumnName("idvehiculotrailer");
+        builder.ToTable("vehiculotrailer_destino");
+        builder.HasKey(x => x.VehiculoTrailerDestino);
+        builder.Property(x => x.VehiculoTrailerDestino).HasColumnName("vehiculotrailer_destino");
+        builder.Property(x => x.dvehiculotrailer).HasColumnName("dvehiculotrailer");
         builder.Property(x => x.iddestino).HasColumnName("iddestino");
-        builder.Property(x => x.idcuidad).HasColumnName("idciudad");
+        builder.Property(x => x.idcuidad).HasColumnName("idcuidad");
     }
 }

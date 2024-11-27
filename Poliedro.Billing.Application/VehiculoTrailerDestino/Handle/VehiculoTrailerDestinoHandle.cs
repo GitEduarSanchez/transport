@@ -10,8 +10,8 @@ public class VehiculoTrailerDestinoHandle(IVehiculoTrailerDestinoRepository _Veh
 {
     public async Task<bool> Handle(CreateVehiculoTrailerDestinoCommand request, CancellationToken cancellationToken)
     {
-        VehiculoTrailerDestinoEntity VehiculoTrailerDestino = new() { dvehiculotrailer= request.dvehiculotrailer,iddestino= request.iddestino,idcuidad= request.idcuidad};
-        return await _VehiculoTrailerDestinoRepository.SaveAsync(VehiculoTrailerDestino); 
+        VehiculoTrailerDestinoEntity vehiculoTrailerDestino = new() { dvehiculotrailer= request.dvehiculotrailer,iddestino= request.iddestino,idcuidad= request.idcuidad};
+        return await _VehiculoTrailerDestinoRepository.SaveAsync(vehiculoTrailerDestino); 
     }
     
 }

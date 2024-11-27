@@ -11,7 +11,7 @@ public class GetAllActuatorHandle(IVehiculoTrailerDestinoRepository  _VehiculoTr
         var entities = await _VehiculoTrailerDestinoRepository.GetAllAsync();
         return entities.Select(VehiculoTrailerDestino => new VehiculoTrailerDestinoDto
         (
-            Id: VehiculoTrailerDestino.Id,
+            VehiculoTrailerDestino: VehiculoTrailerDestino.VehiculoTrailerDestino,
             dvehiculotrailer: VehiculoTrailerDestino.dvehiculotrailer,
             iddestino: VehiculoTrailerDestino.iddestino,
             idcuidad: VehiculoTrailerDestino.idcuidad
