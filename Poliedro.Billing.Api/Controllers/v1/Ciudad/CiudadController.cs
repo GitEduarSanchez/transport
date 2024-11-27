@@ -5,6 +5,7 @@ using Poliedro.Billing.Application.Common.Exeptions;
 using Poliedro.Billing.Application.Ciudad.Dto;
 using Poliedro.Billing.Application.Ciudad.Query;
 using Poliedro.Billing.Application.Ciudad.Commands;
+using Poliedro.Billing.Application.Ciudad.Commands.Validator;
 
 namespace Poliedro.Billing.Api.Controllers.v1.Ciudad
 {
@@ -32,6 +33,12 @@ namespace Poliedro.Billing.Api.Controllers.v1.Ciudad
 
         public async Task<ActionResult<bool>> Create([FromBody] CreateCiudadCommand command)
         {
+             var validationResult = await new CreateCiudadCommandValidator().ValidateAsync(command);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors.Select(e => e.ErrorMessage));
+            }
+
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
