@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
 using Poliedro.Billing.Application.ControlViajeProducto.Commands;
+using Poliedro.Billing.Application.ControlViajeProducto.Commands.Validator;
 using Poliedro.Billing.Application.ControlViajeProducto.Dto;
 using Poliedro.Billing.Application.ControlViajeProducto.Query;
 
@@ -32,6 +33,11 @@ namespace Poliedro.Billing.Api.Controllers.v1.ControlViajeProducto.controllers
 
         public async Task<ActionResult<bool>> Create([FromBody] CreateControlViajeProductoCommand command)
         {
+            var validationResult = await new CreateControlViajeProductoCommandValidator().ValidateAsync(command);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors.Select(e => e.ErrorMessage));
+            }
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
