@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
 using Poliedro.Billing.Application.departamento.Commands;
-
+using Poliedro.Billing.Application.departamento.Commands.Validator;
 using Poliedro.Billing.Application.departamento.Dto;
 using Poliedro.Billing.Application.departamento.Query;
 
@@ -32,6 +32,11 @@ namespace Poliedro.Billing.Api.Controllers.v1.departamento.Controllers
 
         public async Task<ActionResult<bool>> Create([FromBody] CreatedepartamentoCommand command)
         {
+             var validationResult = await new CreatedepartamentoCommandValidator().ValidateAsync(command);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors.Select(e => e.ErrorMessage));
+            }
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
