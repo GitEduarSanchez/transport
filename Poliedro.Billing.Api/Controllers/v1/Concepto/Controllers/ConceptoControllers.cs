@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
 using Poliedro.Billing.Application.Concepto.Commands;
 using Poliedro.Billing.Application.Concepto.Commands.Query;
+using Poliedro.Billing.Application.Concepto.Commands.Validator;
 using Poliedro.Billing.Application.Concepto.Dto;
 using Poliedro.Billing.Application.Estado.Commands;
 
@@ -33,6 +34,11 @@ namespace Poliedro.Billing.Api.Controllers.v1.Concepto.Controllers
 
         public async Task<ActionResult<bool>> Create([FromBody] CreateConceptoCommand command)
         {
+            var validationResult = await new CreateConceptoCommandValidator().ValidateAsync(command);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors.Select (e => e.ErrorMessage));
+            }
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
