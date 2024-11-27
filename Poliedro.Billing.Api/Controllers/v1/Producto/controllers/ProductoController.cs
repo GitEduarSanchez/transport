@@ -6,6 +6,7 @@ using Poliedro.Billing.Application.Producto.commands;
 using Poliedro.Billing.Application.Producto.Commands;
 using Poliedro.Billing.Application.Producto.Dto;
 using Poliedro.Billing.Application.Producto.Query;
+using Poliedro.Billing.ApplicationProducto.Commands.Validator;
 
 namespace Poliedro.Billing.Api.Controllers.v1.Producto.Controllers
 {
@@ -32,6 +33,11 @@ namespace Poliedro.Billing.Api.Controllers.v1.Producto.Controllers
 
         public async Task<ActionResult<bool>> Create([FromBody] CreateProductoCommand command)
         {
+                var validationResult = await new CreateProductoCommandValidator().ValidateAsync(command);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors.Select(e => e.ErrorMessage));
+            }
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
