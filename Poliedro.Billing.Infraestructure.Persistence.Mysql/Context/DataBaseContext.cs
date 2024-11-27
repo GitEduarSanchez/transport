@@ -9,6 +9,7 @@ using Poliedro.Billing.Domain.Estado.Entities;
 using Poliedro.Billing.Domain.controlviaje_origen.Entities;
 using Poliedro.Billing.Domain.Descargue.Entities;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.EntityFramework.EntityConfigurations;
+using Poliedro.Billing.Domain.categoria_documento.Entities;
 using Poliedro.Billing.Domain.Origen.Entities;
 
 namespace Poliedro.Billing.Infraestructure.Persistence.Mysql.Context;
@@ -25,6 +26,7 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
     public DbSet<View_CiudadEntity> View_Ciudad { get; set; }
     public DbSet<ControlViajeProductoEntity> ControlViajeProducto { get; set; }
      public DbSet<controlviaje_origenEntity> controlviaje_origen { get; set; }
+     public DbSet<categoria_documentoEntity> categoria_documento { get; set; }
     
     public DbSet<OrigenEntity> Origen { get; set; }
 
@@ -45,10 +47,12 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
         new ControlViajeProductoConfiguration(modelBuilder.Entity<ControlViajeProductoEntity>());
         new DescargueConfiguration(modelBuilder.Entity<DescargueEntity>());
         new EstadoConfiguration(modelBuilder.Entity<EstadoEntity>());
+        new categoria_documentoConfiguration(modelBuilder.Entity<categoria_documentoEntity>());
         new OrigenConfiguration(modelBuilder.Entity<OrigenEntity>());
         new controlviaje_origenConfiguration(modelBuilder.Entity<controlviaje_origenEntity>());
     }
     }
+    
 
 
 
