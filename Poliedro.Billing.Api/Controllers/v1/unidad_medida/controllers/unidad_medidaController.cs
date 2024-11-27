@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
 using Poliedro.Billing.Application.unidad_medida.commands;
+using Poliedro.Billing.Application.unidad_medida.Commands.Validator;
 using Poliedro.Billing.Application.unidad_medida.Dto;
 using Poliedro.Billing.Application.unidad_medida.Query;
 
@@ -32,6 +33,11 @@ namespace Poliedro.Billing.Api.Controllers.v1.unidad_medida.controllers
 
         public async Task<ActionResult<bool>> Create([FromBody] Createunidad_medidaCommand command)
         {
+              var validationResult = await new Createunidad_medidaCommandValidator().ValidateAsync(command);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors.Select(e => e.ErrorMessage));
+            }
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
