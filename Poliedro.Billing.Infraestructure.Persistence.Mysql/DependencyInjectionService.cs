@@ -6,6 +6,7 @@ using Poliedro.Billing.Domain.Ciudad.Ports;
 using Poliedro.Billing.Domain.Conductor.Ports;
 using Poliedro.Billing.Domain.ControlViaje.Ports;
 using Poliedro.Billing.Domain.ControlViajeProducto.Ports;
+using Poliedro.Billing.Domain.categoria_documento.Ports;
 using Poliedro.Billing.Domain.Descargue.Ports;
 using Poliedro.Billing.Domain.Ports;
 using Poliedro.Billing.Domain.Producto.Ports;
@@ -21,6 +22,8 @@ using Poliedro.Billing.Infraestructure.Persistence.Mysql.Descargue.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Origen.Adapter;
 using Poliedro.Billing.Domain.Estado.Entities.Ports;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Ciudad;
+using Poliedro.Billing.Infraestructure.Persistence.Mysql.categoria_documento;
+
 
 
 namespace Poliedro.Billing.Infraestructure.Persistence.Mysql;
@@ -44,6 +47,7 @@ public static class DependencyInjectionService
         services.AddTransient<IView_CiudadRepository, View_CiudadRepository>();
         services.AddTransient<IControlViajeProductoRepository, ControlViajeProductoRepository>();
         services.AddTransient<IDescargueRepository, DescargueRepository>();
+      services.AddTransient<Icategoria_documentoRepository, categoria_documentoRepository>();
         services.AddTransient<IOrigenRepository, OrigenRepository>();
         return services;
     }
