@@ -10,6 +10,7 @@ using Poliedro.Billing.Domain.Descargue.Entities;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.EntityFramework.EntityConfigurations;
 using Poliedro.Billing.Domain.categoria_documento.Entities;
 using Poliedro.Billing.Domain.Origen.Entities;
+using Poliedro.Billing.Domain.VehiculoTrailerDestino.Entities;
 
 namespace Poliedro.Billing.Infraestructure.Persistence.Mysql.Context;
 
@@ -27,6 +28,7 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
      public DbSet<categoria_documentoEntity> categoria_documento { get; set; }
     
     public DbSet<OrigenEntity> Origen { get; set; }
+     public DbSet<VehiculoTrailerDestinoEntity> VehiculoTrailerDestino { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -47,8 +49,10 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
         new EstadoConfiguration(modelBuilder.Entity<EstadoEntity>());
         new categoria_documentoConfiguration(modelBuilder.Entity<categoria_documentoEntity>());
         new OrigenConfiguration(modelBuilder.Entity<OrigenEntity>());
+        new VehiculoTrailerDestinoConfiguration(modelBuilder.Entity<VehiculoTrailerDestinoEntity>());
     }
     }
+    
     
 
 
