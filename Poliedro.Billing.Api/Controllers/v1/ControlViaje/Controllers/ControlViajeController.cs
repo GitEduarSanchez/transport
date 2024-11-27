@@ -5,6 +5,7 @@ using Poliedro.Billing.Application.Common.Exeptions;
 using Poliedro.Billing.Application.ControlViaje.Query;
 using Poliedro.Billing.Application.ControlViaje.Dto;
 using Poliedro.Billing.Application.ControlViaje.Commands;
+using Poliedro.Billing.Application.ControlViaje.Commands.Validator;
 
 namespace Poliedro.Billing.Api.Controllers.v1.ControlViaje.Controllers
 
@@ -35,6 +36,11 @@ namespace Poliedro.Billing.Api.Controllers.v1.ControlViaje.Controllers
 
         public async Task<ActionResult<bool>> Create([FromBody] CreateControlViajeCommand command)
         {
+           var validationResult = await new CreateControlViajeCommandValidator().ValidateAsync(command);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors.Select(e => e.ErrorMessage));
+            }
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
