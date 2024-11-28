@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
 using Poliedro.Billing.Application.pais.Commands;
+using Poliedro.Billing.Application.pais.Commands.Validator;
 using Poliedro.Billing.Application.pais.Dto;
 using Poliedro.Billing.Application.pais.Query;
 
@@ -30,7 +31,12 @@ namespace Poliedro.Billing.Api.Controllers.v1.pais.Controllers
         [HttpPost]
 
         public async Task<ActionResult<bool>> Create([FromBody] CreatepaisCommand command)
-        {
+        {   
+             var validationResult = await new CreatepaisCommandValidator().ValidateAsync(command);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors.Select(e => e.ErrorMessage));
+            }
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
