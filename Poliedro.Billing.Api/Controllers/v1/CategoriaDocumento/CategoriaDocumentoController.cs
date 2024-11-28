@@ -2,42 +2,42 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
-using Poliedro.Billing.Application.categoria_documento.Dto;
-using Poliedro.Billing.Application.categoria_documento.Query;
-using Poliedro.Billing.Application.categoria_documento.Commands;
+using Poliedro.Billing.Application.CategoriaDocumento.Dto;
+using Poliedro.Billing.Application.CategoriaDocumento.Query;
+using Poliedro.Billing.Application.CategoriaDocumento.Commands;
 
-namespace Poliedro.Billing.Api.Controllers.v1.categoria_documento
+namespace Poliedro.Billing.Api.Controllers.v1.CategoriaDocumento
 {
     [Route("api/[controller]")]
     [ApiController]
     [TypeFilter(typeof(ExceptionManager))]
-    public class categoria_documentoController(IMediator mediator) : ControllerBase
+    public class CategoriaDocumentoController(IMediator mediator) : ControllerBase
     {
         [HttpGet]
-        public async Task<IEnumerable<categoria_documentoDto>> GetAll()
+        public async Task<IEnumerable<CategoriaDocumentoDto>> GetAll()
         {
             return await mediator.Send(new GetAllActuatorsQuery());
         }
 
         [HttpGet("{id}")]
-        public async Task<categoria_documentoDto> GetAsync([FromRoute] int id)
+        public async Task<CategoriaDocumentoDto> GetAsync([FromRoute] int id)
         {
-            var getcategoria_documentoByIdQuery = new GetByIdcategoria_documentoQuery(id);
-            return await mediator.Send(getcategoria_documentoByIdQuery);
+            var getCategoriaDocumentoByIdQuery = new GetByIdCategoriaDocumentoQuery(id);
+            return await mediator.Send(getCategoriaDocumentoByIdQuery);
         }
 
 
 
         [HttpPost]
 
-        public async Task<ActionResult<bool>> Create([FromBody] Createcategoria_documentoCommand command)
+        public async Task<ActionResult<bool>> Create([FromBody] CreateCategoriaDocumentoCommand command)
         {
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Createcategoria_documentoCommand command)
+        public void Put(int id, [FromBody] CreateCategoriaDocumentoCommand command)
         {
         }
 
