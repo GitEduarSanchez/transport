@@ -11,6 +11,7 @@ using Poliedro.Billing.Domain.Descargue.Ports;
 using Poliedro.Billing.Domain.controlviaje_origen.Entities.Ports;
 using Poliedro.Billing.Domain.Ports;
 using Poliedro.Billing.Domain.Producto.Ports;
+using Poliedro.Billing.Domain.unidad_medida.Ports;
 using Poliedro.Billing.Domain.Origen.Ports;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Concepto.Adapter;
@@ -19,13 +20,17 @@ using Poliedro.Billing.Infraestructure.Persistence.Mysql.ControlViajeProducto.Ad
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.controlviaje_origen.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Context;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Producto.Adapter;
+using Poliedro.Billing.Infraestructure.Persistence.Mysql.unidad_medida.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Estado.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Descargue.Adapter;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Origen.Adapter;
 using Poliedro.Billing.Domain.Estado.Entities.Ports;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.Ciudad;
+using Poliedro.Billing.Infraestructure.Persistence.Mysql.departamento;
+using Poliedro.Billing.Domain.departamento.Entities.Ports;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.categoria_documento;
 
+using Poliedro.Billing.Infraestructure.Persistence.Mysql.departamento.Adapter;
 
 
 
@@ -43,11 +48,12 @@ public static class DependencyInjectionService
         services.AddTransient<IMessageProvider, MessageProvider>();
         services.AddTransient<IConductorRepository, ConductorRepository>();
         services.AddTransient<IProductoRepository, ProductoRepository>();
+        services.AddTransient<Iunidad_medidaRepository, unidad_medidaRepository>();
         services.AddTransient<IConceptoRepository, ConceptoRepository>();
         services.AddTransient<IControlViajeRepository, ControlViaje.Adapter.ControlViajeRepository>();
         services.AddTransient<IEstadoRepository, EstadoRepository>();
         services.AddTransient<ICiudadRepository, CiudadRepository>();
-        services.AddTransient<IView_CiudadRepository, View_CiudadRepository>();
+        services.AddTransient<IdepartamentoRepository, departamentoRepository>();
         services.AddTransient<IControlViajeProductoRepository, ControlViajeProductoRepository>();
         services.AddTransient<IDescargueRepository, DescargueRepository>();
         services.AddTransient<Icontrolviaje_origenRepository, controlviaje_origenRepository>();
