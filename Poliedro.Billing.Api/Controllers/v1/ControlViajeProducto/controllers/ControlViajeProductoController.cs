@@ -6,6 +6,7 @@ using Poliedro.Billing.Application.ControlViajeProducto.Commands;
 using Poliedro.Billing.Application.ControlViajeProducto.Commands.Validator;
 using Poliedro.Billing.Application.ControlViajeProducto.Dto;
 using Poliedro.Billing.Application.ControlViajeProducto.Query;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Poliedro.Billing.Api.Controllers.v1.ControlViajeProducto.controllers
 {
@@ -14,7 +15,12 @@ namespace Poliedro.Billing.Api.Controllers.v1.ControlViajeProducto.controllers
     [TypeFilter(typeof(ExceptionManager))]
     public class ControlViajeProductoController(IMediator mediator) : ControllerBase
     {
-
+        [SwaggerOperation(Summary = "Get State All")]
+        [SwaggerResponse(StatusCodes.Status200OK, "The operation was successful.", typeof(GetAllControlViajeProductoQuery))]
+        [SwaggerResponse(StatusCodes.Status400BadRequest, "Incorrect request parameters.", typeof(ProblemDetails))]
+        [SwaggerResponse(StatusCodes.Status401Unauthorized, "The request lacks valid authentication credentials.", typeof(ProblemDetails))]
+        [SwaggerResponse(StatusCodes.Status500InternalServerError, "Error processing the request.", typeof(ProblemDetails))]
+        
         [HttpGet]
         public async Task<IEnumerable<ControlViajeProductoDto>> GetAll()
         {
