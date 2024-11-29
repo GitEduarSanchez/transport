@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
 using Poliedro.Billing.Application.Origen.Commands;
 using Poliedro.Billing.Application.Origen.Commands.CreateServerCommand;
+using Poliedro.Billing.Application.Origen.Commands.Validator;
 using Poliedro.Billing.Application.Origen.Dto;
 using Poliedro.Billing.Application.Origen.Query;
 
@@ -33,15 +34,26 @@ namespace Poliedro.Billing.Api.Controllers.v1.Server
                 
         public async Task<ActionResult<bool>> Create([FromBody] CreateOrigenCommand command)
         {
+              var validationResult = await new CreateOrigenCommandValidator().ValidateAsync(command);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors.Select(e => e.ErrorMessage));
+            }
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
        
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] CreateOrigenCommand command)
+        public async Task<IActionResult> UpdateOrigen(int id, [FromBody] UpdateOrigenCommand command)
         {
-        }
+            if (id != command.Id)
+            {
+                return BadRequest();
+            }
 
+            await mediator.Send(command);
+            return NoContent();
+        }
         
         [HttpDelete("{id}")]
         public async Task<ActionResult<bool>> Delete(int id)

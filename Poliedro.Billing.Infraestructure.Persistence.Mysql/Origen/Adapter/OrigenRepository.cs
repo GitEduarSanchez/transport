@@ -27,9 +27,16 @@ public class OrigenRepository(DataBaseContext _context) : IOrigenRepository
         return await _context.Origen.FirstAsync(x => x.Id == Id);
     }
 
-    public async Task<bool> SaveAsync(OrigenEntity origen)
+    public Task<bool> SaveAsync(OrigenEntity origen)
     {
-          await _context.Origen.AddAsync(origen);
-        return  await _context.SaveChangesAsync() > 0;
+        throw new NotImplementedException();
+    }
+
+    public async Task UpdateAsync(int Id, OrigenEntity origen)
+    {
+        var entity = await _context.Origen.FindAsync(Id) ?? throw new KeyNotFoundException($"Entity with Id {Id} not found.");
+        entity.descripcion = origen.descripcion;
+        _context.Origen.Update(entity);
+        await _context.SaveChangesAsync();
     }
 }
