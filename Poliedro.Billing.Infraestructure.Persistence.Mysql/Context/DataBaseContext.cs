@@ -12,7 +12,8 @@ using Poliedro.Billing.Infraestructure.Persistence.Mysql.EntityFramework.EntityC
 using Poliedro.Billing.Domain.categoria_documento.Entities;
 using Poliedro.Billing.Domain.departamento.Entities;
 using Poliedro.Billing.Domain.Origen.Entities;
-
+using Poliedro.Billing.Domain.Vehiculo.Entities;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Poliedro.Billing.Infraestructure.Persistence.Mysql.Context;
 
 public class DataBaseContext(DbContextOptions options) : DbContext(options)
@@ -30,6 +31,7 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
      public DbSet<categoria_documentoEntity> categoria_documento { get; set; }
     
     public DbSet<OrigenEntity> Origen { get; set; }
+     public DbSet<VehiculoEntity> Vehiculo { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -51,10 +53,10 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
         new EstadoConfiguration(modelBuilder.Entity<EstadoEntity>());
         new categoria_documentoConfiguration(modelBuilder.Entity<categoria_documentoEntity>());
         new OrigenConfiguration(modelBuilder.Entity<OrigenEntity>());
+        new VehiculoConfiguration(modelBuilder.Entity<VehiculoEntity>());
     }
     }
-    
 
 
 
-   
+

@@ -2,9 +2,9 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
-using Poliedro.Billing.Application.Conductor.Commands;
-using Poliedro.Billing.Application.Conductor.Dto;
-using Poliedro.Billing.Application.Conductor.Query;
+using Poliedro.Billing.Application.Vehiculo.Commands;
+using Poliedro.Billing.Application.Vehiculo.Dto;
+using Poliedro.Billing.Application.Vehiculo.Query;
 
 namespace Poliedro.Billing.Api.Controllers.v1.Vehiculo
 {
@@ -14,29 +14,29 @@ namespace Poliedro.Billing.Api.Controllers.v1.Vehiculo
     public class VehiculoController(IMediator mediator) : ControllerBase
     {
         [HttpGet]
-        public async Task<IEnumerable<ConductorDto>> GetAll()
+        public async Task<IEnumerable<VehiculoDto>> GetAll()
         {
             return await mediator.Send(new GetAllActuatorsQuery());
         }
 
         [HttpGet("{id}")]
-        public async Task<ConductorDto> GetAsync([FromRoute] int id)
+        public async Task<VehiculoDto> GetAsync([FromRoute] int id)
         {
-            var getConductorByIdQuery = new GetByIdConductorQuery(id);
-            return await mediator.Send(getConductorByIdQuery);
+            var getVehiculoByIdQuery = new GetByIdVehiculoQuery(id);
+            return await mediator.Send(getVehiculoByIdQuery);
         }
 
 
         [HttpPost]
 
-        public async Task<ActionResult<bool>> Create([FromBody] CreateConductorCommand command)
+        public async Task<ActionResult<bool>> Create([FromBody] CreateVehiculoCommand command)
         {
             await mediator.Send(command);
             return CreatedAtAction(null, null);
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] CreateConductorCommand command)
+        public void Put(int id, [FromBody] CreateVehiculoCommand command)
         {
         }
 
