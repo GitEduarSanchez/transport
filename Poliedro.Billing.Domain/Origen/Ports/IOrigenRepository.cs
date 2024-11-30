@@ -8,4 +8,5 @@ public interface IOrigenRepository
     Task<IEnumerable<OrigenEntity>> GetAllAsync();
     Task<OrigenEntity> GetById(int Id);
      Task<bool> DeleteAsync(int Id);
+    Task UpdateAsync(int id, OrigenEntity origenEntity);
 }
