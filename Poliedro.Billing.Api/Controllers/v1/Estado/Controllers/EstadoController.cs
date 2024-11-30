@@ -1,10 +1,14 @@
-﻿using FluentValidation.Results;
+﻿using FluentValidation;
+using FluentValidation.Results;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
 using Poliedro.Billing.Application.Estado.Commands;
 using Poliedro.Billing.Application.Estado.Commands.Dto;
 using Poliedro.Billing.Application.Estado.Commands.Query;
+using Poliedro.Billing.Application.Estado.Commands.Validator;
+using Swashbuckle.AspNetCore.Annotations;
+
 
 namespace Poliedro.Billing.Api.Controllers.v1.Estado.Controllers
 {
@@ -13,6 +17,11 @@ namespace Poliedro.Billing.Api.Controllers.v1.Estado.Controllers
     [TypeFilter(typeof(ExceptionManager))]
     public class EstadoController(IMediator mediator) : ControllerBase
     {
+        [SwaggerOperation(Summary = "Get State All")]
+        [SwaggerResponse(StatusCodes.Status200OK, "The operation was successful.", typeof(GetAllEstadoQuery))]
+        [SwaggerResponse(StatusCodes.Status400BadRequest, "Incorrect request parameters.", typeof(ProblemDetails))]
+        [SwaggerResponse(StatusCodes.Status401Unauthorized, "The request lacks valid authentication credentials.", typeof(ProblemDetails))]
+        [SwaggerResponse(StatusCodes.Status500InternalServerError, "Error processing the request.", typeof(ProblemDetails))]
         [HttpGet]
         public async Task<IEnumerable<EstadoDto>> GetAll()
         {
@@ -31,8 +40,14 @@ namespace Poliedro.Billing.Api.Controllers.v1.Estado.Controllers
 
         public async Task<ActionResult<bool>> Create([FromBody] CreateEstadoCommand command)
         {
+            var validationResult = await new CreateEstadoCommandValidator().ValidateAsync(command);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors.Select(e => e.ErrorMessage));
+            }
             await mediator.Send(command);
             return CreatedAtAction(null, null);
+
         }
 
         [HttpPut("{id}")]
