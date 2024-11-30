@@ -8,7 +8,7 @@ using Poliedro.Billing.Application.Origen.Commands.Validator;
 using Poliedro.Billing.Application.Origen.Dto;
 using Poliedro.Billing.Application.Origen.Query;
 
-namespace Poliedro.Billing.Api.Controllers.v1.Server
+namespace Poliedro.Billing.Api.Controllers.v1.Origen.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
