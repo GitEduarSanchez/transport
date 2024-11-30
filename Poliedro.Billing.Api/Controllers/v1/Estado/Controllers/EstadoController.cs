@@ -28,6 +28,12 @@ namespace Poliedro.Billing.Api.Controllers.v1.Estado.Controllers
             return await mediator.Send(new GetAllEstadoQuery());
         }
 
+        [SwaggerOperation(Summary = "Get State ById")]
+        [SwaggerResponse(StatusCodes.Status200OK, "The operation was successful.", typeof(GetByIdEstadoQuery))]
+        [SwaggerResponse(StatusCodes.Status400BadRequest, "Incorrect request parameters.", typeof(ProblemDetails))]
+        [SwaggerResponse(StatusCodes.Status401Unauthorized, "The request lacks valid authentication credentials.", typeof(ProblemDetails))]
+        [SwaggerResponse(StatusCodes.Status500InternalServerError, "Error processing the request.", typeof(ProblemDetails))]
+
         [HttpGet("{id}")]
         public async Task<EstadoDto> GetAsync([FromRoute] int id)
         {
@@ -35,7 +41,12 @@ namespace Poliedro.Billing.Api.Controllers.v1.Estado.Controllers
             return await mediator.Send(getEstadoByIdQuery);
         }
 
-
+        [SwaggerOperation(Summary = "Create a new State")]
+        [SwaggerResponse(StatusCodes.Status201Created, "The state was created successfully.", typeof(bool))]
+        [SwaggerResponse(StatusCodes.Status400BadRequest, "Incorrect request parameters.", typeof(ProblemDetails))]
+        [SwaggerResponse(StatusCodes.Status401Unauthorized, "The request lacks valid authentication credentials.", typeof(ProblemDetails))]
+        [SwaggerResponse(StatusCodes.Status500InternalServerError, "Error processing the request.", typeof(ProblemDetails))]
+    
         [HttpPost]
 
         public async Task<ActionResult<bool>> Create([FromBody] CreateEstadoCommand command)
