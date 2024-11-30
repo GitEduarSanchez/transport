@@ -12,7 +12,7 @@ namespace Poliedro.Billing.Api.Controllers.v1.unidad_medida.controllers
     [Route("api/[controller]")]
     [ApiController]
     [TypeFilter(typeof(ExceptionManager))]
-    public class unidad_medidaController(IMediator mediator) : ControllerBase
+    public class UnidadMedidaController(IMediator mediator) : ControllerBase
     {
         [HttpGet]
         public async Task<IEnumerable<unidad_medidaDto>> GetAll()
