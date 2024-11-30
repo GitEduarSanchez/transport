@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Poliedro.Billing.Domain.Concepto.Entities;
 using Poliedro.Billing.Domain.Ciudad.Entities;
+using Poliedro.Billing.Domain.pais.Entities;
 using Poliedro.Billing.Domain.ControlViajeProducto.Entities;
 using Poliedro.Billing.Domain.Conductor.Entities;
 using Poliedro.Billing.Domain.Producto.Entities;
@@ -24,6 +25,7 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
     public DbSet<ControlViajeEntity> ControlViaje { get; set; }
     public DbSet<EstadoEntity> Estado { get; set; }
     public DbSet<CiudadEntity> Ciudad { get; set; }
+    public DbSet<paisEntity> pais { get; set; }
     public DbSet<departamentoEntity> departamento { get; set; }
     public DbSet<DescargueEntity> Descargue { get; set; }
     public DbSet<ControlViajeProductoEntity> ControlViajeProducto { get; set; }
@@ -45,6 +47,7 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
         new ConceptoConfiguration(modelBuilder.Entity<ConceptoEntity>());
         new ControlViajeConfiguration(modelBuilder.Entity<ControlViajeEntity>());
         new CiudadConfiguration(modelBuilder.Entity<CiudadEntity>());
+        new paisConfiguration(modelBuilder.Entity<paisEntity>());
         new departamentoConfiguration(modelBuilder.Entity<departamentoEntity>());
         new ControlViajeProductoConfiguration(modelBuilder.Entity<ControlViajeProductoEntity>());
         new DescargueConfiguration(modelBuilder.Entity<DescargueEntity>());
