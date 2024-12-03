@@ -17,7 +17,7 @@ namespace Poliedro.Billing.Api.Controllers.v1.Origen.Controllers
     public class OrigenController(IMediator mediator) : ControllerBase
     {
         [SwaggerOperation(Summary = "Get State All")]
-        [SwaggerResponse(StatusCodes.Status200OK, "The operation was successful.", typeof(GetAllOrigenQuery))]
+        [SwaggerResponse(StatusCodes.Status200OK, "The operation was successful.", typeof(IEnumerable<OrigenDto>))]
         [SwaggerResponse(StatusCodes.Status400BadRequest, "Incorrect request parameters.", typeof(ProblemDetails))]
         [SwaggerResponse(StatusCodes.Status401Unauthorized, "The request lacks valid authentication credentials.", typeof(ProblemDetails))]
         [SwaggerResponse(StatusCodes.Status500InternalServerError, "Error processing the request.", typeof(ProblemDetails))]
