@@ -18,7 +18,7 @@ namespace Poliedro.Billing.Api.Controllers.v1.Estado.Controllers
     public class EstadoController(IMediator mediator) : ControllerBase
     {
         [SwaggerOperation(Summary = "Get State All")]
-        [SwaggerResponse(StatusCodes.Status200OK, "The operation was successful.", typeof(GetAllEstadoQuery))]
+        [SwaggerResponse(StatusCodes.Status200OK, "The operation was successful.", typeof(GetAllActuatorsQuery))]
         [SwaggerResponse(StatusCodes.Status400BadRequest, "Incorrect request parameters.", typeof(ProblemDetails))]
         [SwaggerResponse(StatusCodes.Status401Unauthorized, "The request lacks valid authentication credentials.", typeof(ProblemDetails))]
         [SwaggerResponse(StatusCodes.Status500InternalServerError, "Error processing the request.", typeof(ProblemDetails))]

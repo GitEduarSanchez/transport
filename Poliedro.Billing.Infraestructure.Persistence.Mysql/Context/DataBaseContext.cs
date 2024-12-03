@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Poliedro.Billing.Domain.Concepto.Entities;
 using Poliedro.Billing.Domain.Ciudad.Entities;
+using Poliedro.Billing.Domain.pais.Entities;
 using Poliedro.Billing.Domain.ControlViajeProducto.Entities;
 using Poliedro.Billing.Domain.Ciudad.Entities;
 using Poliedro.Billing.Domain.ControlViajeProducto.Entities;
@@ -11,7 +12,7 @@ using Poliedro.Billing.Domain.unidad_medida.Entities;
 using Poliedro.Billing.Domain.ControlViaje.Entities;
 using Poliedro.Billing.Domain.Estado.Entities;
 using Poliedro.Billing.Infraestructure.Persistence.Mysql.EntityFramework.EntityConfigurations;
-using Poliedro.Billing.Domain.categoria_documento.Entities;
+using Poliedro.Billing.Domain.CategoriaDocumento.Entities;
 using Poliedro.Billing.Domain.departamento.Entities;
 using Poliedro.Billing.Domain.Origen.Entities;
 
@@ -25,11 +26,12 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
     public DbSet<ConceptoEntity> Concepto { get; set; }
     public DbSet<ControlViajeEntity> ControlViaje { get; set; }
     public DbSet<EstadoEntity> Estado { get; set; }
+    public DbSet<paisEntity> pais { get; set; }
     public DbSet<departamentoEntity> departamento { get; set; }
     public DbSet<DescargueEntity> Descargue { get; set; }
     public DbSet<View_CiudadEntity> View_Ciudad { get; set; }
     public DbSet<DestinoEntity> Destino { get; set; }
-     public DbSet<categoria_documentoEntity> categoria_documento { get; set; }
+     public DbSet<CategoriaDocumentoEntity> CategoriaDocumento { get; set; }
     
     public DbSet<OrigenEntity> Origen { get; set; }
 
@@ -47,9 +49,10 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
         new ConceptoConfiguration(modelBuilder.Entity<ConceptoEntity>());
         new DestinoConfiguration(modelBuilder.Entity<DestinoEntity>());
         new View_CiudadConfiguration(modelBuilder.Entity<View_CiudadEntity>());
+        new paisConfiguration(modelBuilder.Entity<paisEntity>());
         new departamentoConfiguration(modelBuilder.Entity<departamentoEntity>());
         new EstadoConfiguration(modelBuilder.Entity<EstadoEntity>());
-        new categoria_documentoConfiguration(modelBuilder.Entity<categoria_documentoEntity>());
+        new CategoriaDocumentoConfiguration(modelBuilder.Entity<CategoriaDocumentoEntity>());
         new OrigenConfiguration(modelBuilder.Entity<OrigenEntity>());
     }
     }

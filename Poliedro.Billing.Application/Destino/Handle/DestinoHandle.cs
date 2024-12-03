@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Poliedro.Billing.Application.Destino.Commands.CreateServerCommand;
+using Poliedro.Billing.Application.Destino.Commands;
 using Poliedro.Billing.Domain.Destino.Entities;
 using Poliedro.Billing.Domain.Destino.Ports;
 
@@ -9,7 +9,7 @@ public class DestinoHandle(IDestinoRepository _DestinoRepository) : IRequestHand
 {
     public async Task<bool> Handle(CreateDestinoCommand request, CancellationToken cancellationToken)
     {
-        DestinoEntity Destino = new() { descripcion = request.Descripcion };
+        DestinoEntity Destino = new() { Descripcion = request.Descripcion };
         return await _DestinoRepository.SaveAsync(Destino);
     }
 }
