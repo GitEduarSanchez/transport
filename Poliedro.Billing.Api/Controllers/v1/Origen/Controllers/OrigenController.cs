@@ -7,6 +7,7 @@ using Poliedro.Billing.Application.Origen.Commands.CreateServerCommand;
 using Poliedro.Billing.Application.Origen.Commands.Validator;
 using Poliedro.Billing.Application.Origen.Dto;
 using Poliedro.Billing.Application.Origen.Query;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Poliedro.Billing.Api.Controllers.v1.Origen.Controllers
 {
@@ -15,6 +16,11 @@ namespace Poliedro.Billing.Api.Controllers.v1.Origen.Controllers
     [TypeFilter(typeof(ExceptionManager))]
     public class OrigenController(IMediator mediator) : ControllerBase
     {
+        [SwaggerOperation(Summary = "Get State All")]
+        [SwaggerResponse(StatusCodes.Status200OK, "The operation was successful.", typeof(GetAllOrigenQuery))]
+        [SwaggerResponse(StatusCodes.Status400BadRequest, "Incorrect request parameters.", typeof(ProblemDetails))]
+        [SwaggerResponse(StatusCodes.Status401Unauthorized, "The request lacks valid authentication credentials.", typeof(ProblemDetails))]
+        [SwaggerResponse(StatusCodes.Status500InternalServerError, "Error processing the request.", typeof(ProblemDetails))]
         [HttpGet]
         public async Task<IEnumerable<OrigenDto>> GetAll()
         {
