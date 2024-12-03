@@ -48,7 +48,6 @@ namespace Poliedro.Billing.Api.Controllers.v1.Estado.Controllers
         [SwaggerResponse(StatusCodes.Status500InternalServerError, "Error processing the request.", typeof(ProblemDetails))]
     
         [HttpPost]
-
         public async Task<ActionResult<bool>> Create([FromBody] CreateEstadoCommand command)
         {
             var validationResult = await new CreateEstadoCommandValidator().ValidateAsync(command);
@@ -60,6 +59,13 @@ namespace Poliedro.Billing.Api.Controllers.v1.Estado.Controllers
             return CreatedAtAction(null, null);
 
         }
+
+        [SwaggerOperation(Summary = "Update State", Description = "Updates the state with the specified ID.")]
+        [SwaggerResponse(StatusCodes.Status200OK, "The state was successfully updated.", typeof(UpdateEstadoCommand))]
+        [SwaggerResponse(StatusCodes.Status400BadRequest, "Invalid request or mismatched ID.", typeof(ProblemDetails))]
+        [SwaggerResponse(StatusCodes.Status401Unauthorized, "Authentication credentials are missing or invalid.", typeof(ProblemDetails))]
+        [SwaggerResponse(StatusCodes.Status404NotFound, "The state with the specified ID was not found.", typeof(ProblemDetails))]
+        [SwaggerResponse(StatusCodes.Status500InternalServerError, "An unexpected error occurred while processing the request.", typeof(ProblemDetails))]
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEstado(int id, [FromBody] UpdateEstadoCommand command)
@@ -73,6 +79,12 @@ namespace Poliedro.Billing.Api.Controllers.v1.Estado.Controllers
             return NoContent();
         }
 
+        [SwaggerOperation(Summary = "Delete State", Description = "Deletes the state with the specified ID.")]
+        [SwaggerResponse(StatusCodes.Status200OK, "The state was successfully deleted.")]
+        [SwaggerResponse(StatusCodes.Status400BadRequest, "Invalid request or ID.", typeof(ProblemDetails))]
+        [SwaggerResponse(StatusCodes.Status401Unauthorized, "Authentication credentials are missing or invalid.", typeof(ProblemDetails))]
+        [SwaggerResponse(StatusCodes.Status404NotFound, "The state with the specified ID was not found.", typeof(ProblemDetails))]
+        [SwaggerResponse(StatusCodes.Status500InternalServerError, "An unexpected error occurred while processing the request.", typeof(ProblemDetails))]
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<bool>> Delete(int id)
