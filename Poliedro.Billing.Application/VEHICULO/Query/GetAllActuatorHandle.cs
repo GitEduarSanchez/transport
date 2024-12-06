@@ -13,8 +13,9 @@ public class GetAllActuatorHandle(IVehiculoRepository _vehiculoRepository) : IRe
         (
             idvehiculo: vehiculo.idvehiculo,
             placa: vehiculo.placa,
-           idmarca: vehiculo.idmarca,
-           idtipovehiculo: vehiculo.idtipovehiculo
+            idmarca: vehiculo.idmarca,
+            idtipovehiculo: vehiculo.idtipovehiculo
+           
         ));
     }
 }

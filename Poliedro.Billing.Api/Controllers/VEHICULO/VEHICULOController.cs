@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Poliedro.Billing.Application.Common.Exeptions;
+using Poliedro.Billing.Application.Vehhiculo.Query;
 using Poliedro.Billing.Application.Vehiculo.Commands;
 using Poliedro.Billing.Application.Vehiculo.Dto;
 using Poliedro.Billing.Application.Vehiculo.Query;
@@ -22,7 +23,7 @@ namespace Poliedro.Billing.Api.Controllers.v1.Vehiculo
         [HttpGet("{id}")]
         public async Task<VehiculoDto> GetAsync([FromRoute] int id)
         {
-            var getVehiculoByIdQuery = new GetByIdVehiculoQuery(id);
+            var getVehiculoByIdQuery = new GetByidvehiculoQuery(id);
             return await mediator.Send(getVehiculoByIdQuery);
         }
 

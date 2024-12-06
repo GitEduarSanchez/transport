@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Poliedro.Billing.Application.Vehiculo.Dto;
 
-namespace Poliedro.Billing.Application.Vehiculo.Query;
+namespace Poliedro.Billing.Application.Vehhiculo.Query;
 
-public record GetByIdVehiculoQuery(int idvehiculo): IRequest<VehiculoDto>;
+public record GetByidvehiculoQuery(int idvehiculo) : IRequest<VehiculoDto>;
 
